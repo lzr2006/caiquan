@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using jiandaoshitoubu;
 
 namespace jiandaoshitoubu
 
@@ -14,6 +15,10 @@ namespace jiandaoshitoubu
     public partial class Form1 : Form
     {
         int user_in;
+
+        //记录计算机和玩家赢的次数
+        int user_win = 0;
+        int nl=0;
 
     public Form1()
         {
@@ -36,6 +41,16 @@ namespace jiandaoshitoubu
             button1.BackColor = System.Drawing.Color.Blue;
             button3.BackColor = System.Drawing.Color.Blue;
             button7.Text = "确认";
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label4.Text = user_win.ToString();
+            if (user_win >= 2)
+            {
+                button8.BackColor = System.Drawing.Color.AliceBlue;
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -93,6 +108,7 @@ namespace jiandaoshitoubu
                 if(computer == 3 && user_in == 1)
                 {
                     button7.Text = "您赢了";
+                    user_win = user_win + 1;
                 }
 
                 else
@@ -100,6 +116,7 @@ namespace jiandaoshitoubu
                     if(computer == 1 && user_in == 3)
                     {
                         button7.Text = "电脑赢了";
+                        user_win = user_win - 1;
                     }
 
                     else
@@ -109,6 +126,7 @@ namespace jiandaoshitoubu
                         {
 
                             button7.Text = "您赢了";
+                            user_win = user_win + 1;
                         }
 
                         else
@@ -118,6 +136,7 @@ namespace jiandaoshitoubu
                             {
 
                                 button7.Text = "电脑赢了";
+                                user_win = user_win - 1;
                             }
                         }
                     }
@@ -126,6 +145,19 @@ namespace jiandaoshitoubu
             
         }
 
-        
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (user_win >= 2)
+            {
+                //启动窗口
+                MessageBox.Show("可以启动");
+            }
+
+            else
+            {
+                MessageBox.Show("不可以启动");
+            }
+
+        }
     }
 }
