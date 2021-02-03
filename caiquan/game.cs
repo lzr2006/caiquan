@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using caiquan;
 
 namespace caiquan
 {
@@ -17,11 +18,24 @@ namespace caiquan
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void game_Load(object sender, EventArgs e) {
+
+            RanName rn = new RanName();
+            //获取程序运行路径
+            string local = Application.StartupPath;
+            //取随机路径
+            string will = rn.Iget();
+            //完整路径
+            string okay = local + "\\" + will + ".JPG";
+            MessageBox.Show(okay);
+            //给予PictureBox路径
+            pictureBox2.ImageLocation = okay;
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
-            getrandomname Iget = new getrandomname();
-            string lj = Iget.Iget();
-            MessageBox.Show(lj);
+
         }
     }
 }
