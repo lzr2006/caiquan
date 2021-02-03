@@ -48,7 +48,7 @@
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox2.Location = new System.Drawing.Point(395, 452);
+            this.pictureBox2.Location = new System.Drawing.Point(397, 369);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(203, 214);
             this.pictureBox2.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 12F);
-            this.label1.Location = new System.Drawing.Point(604, 472);
+            this.label1.Location = new System.Drawing.Point(606, 389);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 24);
             this.label1.TabIndex = 2;
@@ -69,7 +69,7 @@
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(8, 672);
+            this.groupBox1.Location = new System.Drawing.Point(10, 589);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1113, 72);
             this.groupBox1.TabIndex = 3;
@@ -146,15 +146,15 @@
             this.label3.Font = new System.Drawing.Font("宋体", 12F);
             this.label3.Location = new System.Drawing.Point(746, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 24);
+            this.label3.Size = new System.Drawing.Size(22, 24);
             this.label3.TabIndex = 7;
-            this.label3.Text = "姓名：victory";
+            this.label3.Text = "]";
             // 
             // game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 747);
+            this.ClientSize = new System.Drawing.Size(1124, 788);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label2);

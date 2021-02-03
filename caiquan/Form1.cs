@@ -95,8 +95,8 @@ namespace jiandaoshitoubu
                     }
                 }
             }
-           
-            if(computer == user_in)
+            #region 核心算法
+            if (computer == user_in)
             {
                 button7.Text = "平局";
 
@@ -144,6 +144,8 @@ namespace jiandaoshitoubu
             }
             
         }
+        #endregion
+
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -163,10 +165,17 @@ namespace jiandaoshitoubu
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+
+
+        private void button10_Click(object sender, EventArgs e)
         {
-            game gm = new game();
-            gm.Show();
+            AboutBox ab = new AboutBox();
+            ab.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

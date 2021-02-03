@@ -42,7 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button9 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -181,23 +181,24 @@
             this.button9.TabIndex = 6;
             this.button9.Text = "布";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button6
+            // button10
             // 
-            this.button6.Location = new System.Drawing.Point(549, 171);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(61, 51);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "debug";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button10.Location = new System.Drawing.Point(226, 337);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(115, 40);
+            this.button10.TabIndex = 8;
+            this.button10.Text = "关于我们";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(655, 388);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -233,7 +234,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button10;
     }
 }
 

@@ -8,15 +8,26 @@ namespace caiquan
 {
     class RanName
     {
-        public string Iget()
+        //public string Iget()
+        //{
+        //    //这个函数用于获取一个随机图片路径
+        //    string Iget;
+        //    Random ran = new Random();
+        //    int will = ran.Next(1, 11);
+        //    string lj = "accets\\";
+        //    Iget = lj + will.ToString();
+        //    return Iget;
+        //    will = ran.Next(1, 11);
+        //}
+
+        public string gets(string path,int ran)
         {
-            //这个函数用于获取一个随机图片路径
-            string Iget;
-            Random ran = new Random();
-            int will = ran.Next(1, 9);
-            string lj = "accets\\";
-            Iget = lj + will.ToString();
-            return Iget;
+            RanName rn = new RanName();
+            //完整路径
+            string okay = path + "\\" + "accets\\" + ran.ToString() +  ".JPG";
+            //返回绝对路径
+            return okay;
+
         }
 
 
