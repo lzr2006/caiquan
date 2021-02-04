@@ -177,5 +177,11 @@ namespace jiandaoshitoubu
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            game gm = new game();
+            gm.Show();
+        }
     }
 }
