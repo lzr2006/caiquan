@@ -173,24 +173,24 @@ namespace caiquan
             //button1.BackColor=button2.BackColor=button3.BackColor=System.Drawing.Color.Chartreuse; 影响观感
             #endregion 
 
-            Switch sw = new Switch();
-            int winner = sw.getwin(user_choose, p1, p2);
+            Core cr = new Core();
+            int winner = cr.winner(p1,p2,user_choose);
             //返回值规范:0->平局 1->Victor单独胜利 2->Utanus单独胜利 3->Victor与user同时胜利 4->Utanus与user同时胜利 5->Victor与Utanus同时胜利 6->user单独胜利
             #region 解析核心算法
             if (winner == 0) {
                 MessageBox.Show("平局");
             }
             if (winner == 1) {
-                MessageBox.Show("Victor单独胜利");
-            }
-            if (winner == 2) {
                 MessageBox.Show("Utanus单独胜利");
             }
+            if (winner == 2) {
+                MessageBox.Show("Victor单独胜利");
+            }
             if (winner == 3) {
-                MessageBox.Show("Victor与user同时胜利");
+                MessageBox.Show("Utanus与user同时胜利");
             }
             if (winner == 4) {
-                MessageBox.Show("Utanus与user同时胜利");
+                MessageBox.Show("Victor与user同时胜利");
             }
             if (winner == 5)
             {
