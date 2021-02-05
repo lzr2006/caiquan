@@ -8,19 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using caiquan;
+using System.Threading;
 
 namespace caiquan
 {
     public partial class game : Form
     {
         int user_choose = 0; //用户选择
+        public int user_blood; //用户血量
+        public int computer1_blood; //Voctor血量
+        public int computer2_blood; //Utanus血量 
         public game()
         {
             InitializeComponent();
         }
 
-        private void game_Load(object sender, EventArgs e) {
 
+
+        private void game_Load(object sender, EventArgs e) {
+            //Thread th = new Thread(timer1_Tick);
             RanName rn = new RanName();
             //获取程序运行路径
             string local = Application.StartupPath;
@@ -31,8 +37,9 @@ namespace caiquan
             //MessageBox.Show(okay);
             ////给予PictureBox路径
             //pictureBox2.ImageLocation = okay;
-
             //取3个随机路径
+
+            loadblood();
             #region 加载图片
             try
             {
@@ -64,11 +71,12 @@ namespace caiquan
         }
         #endregion
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+        //private void label2_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
+            
 
 
         #region 用户选择按钮点击事件
@@ -172,10 +180,11 @@ namespace caiquan
 
             //button1.BackColor=button2.BackColor=button3.BackColor=System.Drawing.Color.Chartreuse; 影响观感
             #endregion 
-
+            
+            
             Core cr = new Core();
             int winner = cr.winner(p1,p2,user_choose);
-            //返回值规范:0->平局 1->Victor单独胜利 2->Utanus单独胜利 3->Victor与user同时胜利 4->Utanus与user同时胜利 5->Victor与Utanus同时胜利 6->user单独胜利
+           
             #region 解析核心算法
             if (winner == 0) {
                 MessageBox.Show("平局");
@@ -204,5 +213,38 @@ namespace caiquan
 
         }
 
+        public void loadblood() {
+            user_blood = 5;
+            computer1_blood = 5;
+            computer2_blood = 5;
+            //user_blood = bd.getblood(1);
+            //computer1_blood = bd.getblood(2);
+            //computer2_blood = bd.getblood(3);//传参
+
+        }
+
+      public void getblood()
+        {
+            //回显血量
+            //label5.Text = user_blood.ToString();
+            //label6.Text = computer1_blood.ToString();
+            //label8.Text = computer2_blood.ToString();
+            //MessageBox.Show(user_blood.ToString());
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //实时更新血量
+            //Blood bda = new Blood();
+            label5.Text = user_blood.ToString();
+            label6.Text = computer1_blood.ToString();
+            label8.Text = computer2_blood.ToString();
+            //MessageBox.Show(bda.User_blood.ToString()); //user_blood
+        }
     }
 }
