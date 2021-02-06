@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using caiquan;
 using System.Threading;
-
 namespace caiquan
 {
     public partial class game : Form
     {
-        #region 声明变量
+        #region 声明字段
         int user_choose = 0; //用户选择
         int user_blood = 5; //用户血量
         int computer1_blood = 5; //Voctor血量
@@ -28,8 +27,6 @@ namespace caiquan
         {
             InitializeComponent();
         }
-
-
 
         private void game_Load(object sender, EventArgs e) {
             //Thread th = new Thread(timer1_Tick);
@@ -126,7 +123,7 @@ namespace caiquan
         }
         #endregion
 
- 
+
         private void button10_Click(object sender, EventArgs e)
         {
             game gm = new game();
@@ -185,111 +182,190 @@ namespace caiquan
             }
 
             //button1.BackColor=button2.BackColor=button3.BackColor=System.Drawing.Color.Chartreuse; 影响观感
-            #endregion 
-            
-            
+            #endregion
+
+
             Core cr = new Core();
-            int winner = cr.winner(p1,p2,user_choose);
+            int winner = cr.winner(p1, p2, user_choose);
 
             #region 解析核心算法
-            if (winner == 0) {
+            if (winner == 0)
+            {
                 MessageBox.Show("平局");
+                label16.Text = "-0";
+                label17.Text = "-0";
+                label18.Text = "-0";
             }
-            if (winner == 1) {
+            if (winner == 1)
+            {
                 MessageBox.Show("Utanus单独胜利");
-                gm.LessBlood(2, computer2_count);
-                gm.LessBlood(1, computer2_count);
-
+                //gm.LessBlood(2, computer2_count);
+                //gm.LessBlood(1, computer2_count);
+                user_blood = user_blood - computer2_count;
+                computer1_blood = computer1_blood - computer2_count;
+                label17.Text = "-" + computer2_count.ToString();
+                label16.Text = "-" + computer2_count.ToString();
+                label18.Text = "-0";
             }
-            if (winner == 2) {
+            if (winner == 2)
+            {
                 MessageBox.Show("Victor单独胜利");
-                gm.LessBlood(1, computer1_count);
-                gm.LessBlood(3, computer1_count);
+                //gm.LessBlood(1, computer1_count);
+                //gm.LessBlood(3, computer1_count);
+                computer2_blood = computer2_blood - computer1_count;
+                user_blood = user_blood - computer1_count;
+                label16.Text = "-" + computer1_count.ToString();
+                label18.Text = "-" + computer1_count.ToString();
+                label17.Text = "-0";
             }
-            if (winner == 3) {
+            if (winner == 3)
+            {
                 MessageBox.Show("Utanus与user同时胜利");
-                gm.LessBlood(2, computer2_count + user_count);
+                // gm.LessBlood(2, computer2_count + user_count);
+                computer1_blood = computer1_blood - computer2_count - user_count;
+                int test = computer2_count + user_count;
+                label17.Text = "-" + test.ToString();
+                label16.Text = "-0";
+                label18.Text = "-0";
             }
-            if (winner == 4) {
+            if (winner == 4)
+            {
                 MessageBox.Show("Victor与user同时胜利");
-                gm.LessBlood(3, computer1_count + user_count);
+                //gm.LessBlood(3, computer1_count + user_count);
+                computer2_blood = computer2_blood - computer1_count - user_count;
+                int test = user_count + computer1_count;
+                label18.Text = "-" + test.ToString();
+                label16.Text = "-0";
+                label17.Text = "-0";
+
             }
             if (winner == 5)
             {
                 MessageBox.Show("Victor与Utanus同时胜利");
-                gm.LessBlood(1, computer1_count + computer2_count);
+                //gm.LessBlood(1, computer1_count + computer2_count);
+                user_blood = user_blood - computer1_count - computer2_count;
+                int test = computer1_count + computer2_count;
+                label16.Text = "-" + test.ToString();
+                label17.Text = "-0";
+                label18.Text = "-0";
+
             }
             if (winner == 6)
             {
                 MessageBox.Show("user单独胜利");
-                gm.LessBlood(2, user_count);
-                gm.LessBlood(3, user_count);
+                //gm.LessBlood(2, user_count);
+                //gm.LessBlood(3, user_count);
+                computer2_blood = computer2_blood - user_count;
+                computer1_blood = computer1_blood - user_count;
+                label17.Text = "-" + user_count.ToString();
+                label18.Text = "-" + user_count.ToString();
+                label16.Text = "-0";
+
             }
             #endregion
 
+            
+
         }
 
 
+        #region 暂时废弃:血量回显函数
 
-      //public void getblood()
-      //  {
-      //      //回显血量
-      //      //label5.Text = user_blood.ToString();
-      //      //label6.Text = computer1_blood.ToString();
-      //      //label8.Text = computer2_blood.ToString();
-      //      //MessageBox.Show(user_blood.ToString());
-      //  }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(user_blood.ToString(),"UB");
-            MessageBox.Show(user_count.ToString(),"UC");
-        }
+        //public void getblood()
+        //  {
+        //      //回显血量
+        //      //label5.Text = user_blood.ToString();
+        //      //label6.Text = computer1_blood.ToString();
+        //      //label8.Text = computer2_blood.ToString();
+        //      //MessageBox.Show(user_blood.ToString());
+        //  }
+        #endregion
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            #region 更新血量和攻击
             //实时更新血量
             //Blood bda = new Blood();
             label5.Text = user_blood.ToString();
             label6.Text = computer1_blood.ToString();
             label8.Text = computer2_blood.ToString();
             //MessageBox.Show(bda.User_blood.ToString()); //user_blood
+            //实时更新攻击
+            label12.Text = user_count.ToString();
+            label14.Text = computer1_count.ToString();
+            label11.Text = computer2_count.ToString();
             
+            #endregion
+
+            #region 判断是否挂掉
+            if (user_blood <= 0)
+            {
+                // MessageBox.Show("你输了！" + user_count.ToString(), user_blood.ToString());
+                System.Environment.Exit(0);
+
+
+            }
+
+            if (computer1_blood <= 0)
+            {
+                label2.Text = "已经没了";
+                computer1_count = 0;
+
+            }
+
+            if (computer2_blood <= 0)
+            {
+                label8.Text = "已经没了";
+                computer2_count = 0;
+            }
+
+            #endregion
+        }
+        #region 暂时废弃:减血函数
+        //public void LessBlood(int user_id, int count) {
+
+        //    //确认问题根本：函数问题或传入问题
+        //    //问题描述：在外面使用时正常
+        //    //尝试使用return
+
+        //    if (user_id == 1)
+        //    {
+        //        //user
+        //        user_blood = user_blood - count;
+        //        if (user_blood <= 0) {
+        //            MessageBox.Show("你输了！" + user_count.ToString(),user_blood.ToString());
+        //            game gm = new game();
+        //            gm.Close();
+        //        }
+        //    }
+        //    if (user_id == 2)
+        //    {
+        //        //Victor
+        //        computer1_blood = computer1_blood - count;
+        //        if (computer1_blood <= 0)
+        //        {
+        //            MessageBox.Show("Victor挂掉了，攻击变为0.");
+        //            //computer1.count = 0;
+        //        }
+        //    }
+        //    if (user_id == 3)
+        //    {
+        //        //Utanus
+        //        computer2_blood = computer2_blood - count;
+        //        if (computer2_blood <= 0)
+        //        {
+        //            MessageBox.Show("Utanus挂掉了，攻击变为0.");
+        //            //computer2.count = 0;
+        //        }
+        //}
+        // }
+        #endregion
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
 
-        public void LessBlood(int user_id, int count) {
-
-            if (user_id == 1)
-            {
-                //user
-                user_blood = user_blood - count;
-                if (user_blood <= 0) {
-                    MessageBox.Show("你输了！" + user_count.ToString(),user_blood.ToString());
-                    game gm = new game();
-                    gm.Close();
-                }
-            }
-            if (user_id == 2)
-            {
-                //Victor
-                computer1_blood = computer1_blood - count;
-                if (computer1_blood <= 0)
-                {
-                    MessageBox.Show("Victor挂掉了，攻击变为0.");
-                    //computer1.count = 0;
-                }
-            }
-            if (user_id == 3)
-            {
-                //Utanus
-                computer2_blood = computer2_blood - count;
-                if (computer2_blood <= 0)
-                {
-                    MessageBox.Show("Utanus挂掉了，攻击变为0.");
-                    //computer2.count = 0;
-                }
-            }
-        }
 
     }
 }
