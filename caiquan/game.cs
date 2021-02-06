@@ -14,10 +14,16 @@ namespace caiquan
 {
     public partial class game : Form
     {
+        #region 声明变量
         int user_choose = 0; //用户选择
-        public int user_blood; //用户血量
-        public int computer1_blood; //Voctor血量
-        public int computer2_blood; //Utanus血量 
+        int user_blood = 5; //用户血量
+        int computer1_blood = 5; //Voctor血量
+        int computer2_blood = 5; //Utanus血量 
+        int user_count = 1; //用户攻击力
+        int computer1_count = 1; //Voctor攻击力
+        int computer2_count = 1; //Utanus攻击力
+        #endregion
+
         public game()
         {
             InitializeComponent();
@@ -30,16 +36,15 @@ namespace caiquan
             RanName rn = new RanName();
             //获取程序运行路径
             string local = Application.StartupPath;
-            ////取随机路径
-            //string will = rn.Iget();
-            ////完整路径
-            //string okay = local + "\\" + will + ".JPG";
-            //MessageBox.Show(okay);
-            ////给予PictureBox路径
-            //pictureBox2.ImageLocation = okay;
-            //取3个随机路径
 
-            loadblood();
+
+            //user_blood = 5;
+            //computer1_blood = 5;
+            //computer2_blood = 5;
+            //user_count = 1;
+            //computer1_count = 1;
+            //computer2_count = 1;
+
             #region 加载图片
             try
             {
@@ -124,6 +129,7 @@ namespace caiquan
  
         private void button10_Click(object sender, EventArgs e)
         {
+            game gm = new game();
             //电脑随机选择
 
             Random cm = new Random();
@@ -184,57 +190,60 @@ namespace caiquan
             
             Core cr = new Core();
             int winner = cr.winner(p1,p2,user_choose);
-           
+
             #region 解析核心算法
             if (winner == 0) {
                 MessageBox.Show("平局");
             }
             if (winner == 1) {
                 MessageBox.Show("Utanus单独胜利");
+                gm.LessBlood(2, computer2_count);
+                gm.LessBlood(1, computer2_count);
+
             }
             if (winner == 2) {
                 MessageBox.Show("Victor单独胜利");
+                gm.LessBlood(1, computer1_count);
+                gm.LessBlood(3, computer1_count);
             }
             if (winner == 3) {
                 MessageBox.Show("Utanus与user同时胜利");
+                gm.LessBlood(2, computer2_count + user_count);
             }
             if (winner == 4) {
                 MessageBox.Show("Victor与user同时胜利");
+                gm.LessBlood(3, computer1_count + user_count);
             }
             if (winner == 5)
             {
                 MessageBox.Show("Victor与Utanus同时胜利");
+                gm.LessBlood(1, computer1_count + computer2_count);
             }
             if (winner == 6)
             {
                 MessageBox.Show("user单独胜利");
+                gm.LessBlood(2, user_count);
+                gm.LessBlood(3, user_count);
             }
             #endregion
 
         }
 
-        public void loadblood() {
-            user_blood = 5;
-            computer1_blood = 5;
-            computer2_blood = 5;
-            //user_blood = bd.getblood(1);
-            //computer1_blood = bd.getblood(2);
-            //computer2_blood = bd.getblood(3);//传参
 
-        }
 
-      public void getblood()
-        {
-            //回显血量
-            //label5.Text = user_blood.ToString();
-            //label6.Text = computer1_blood.ToString();
-            //label8.Text = computer2_blood.ToString();
-            //MessageBox.Show(user_blood.ToString());
-        }
+      //public void getblood()
+      //  {
+      //      //回显血量
+      //      //label5.Text = user_blood.ToString();
+      //      //label6.Text = computer1_blood.ToString();
+      //      //label8.Text = computer2_blood.ToString();
+      //      //MessageBox.Show(user_blood.ToString());
+      //  }
 
         private void button11_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(user_blood.ToString(),"UB");
+            MessageBox.Show(user_count.ToString(),"UC");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -245,6 +254,42 @@ namespace caiquan
             label6.Text = computer1_blood.ToString();
             label8.Text = computer2_blood.ToString();
             //MessageBox.Show(bda.User_blood.ToString()); //user_blood
+            
         }
+
+        public void LessBlood(int user_id, int count) {
+
+            if (user_id == 1)
+            {
+                //user
+                user_blood = user_blood - count;
+                if (user_blood <= 0) {
+                    MessageBox.Show("你输了！" + user_count.ToString(),user_blood.ToString());
+                    game gm = new game();
+                    gm.Close();
+                }
+            }
+            if (user_id == 2)
+            {
+                //Victor
+                computer1_blood = computer1_blood - count;
+                if (computer1_blood <= 0)
+                {
+                    MessageBox.Show("Victor挂掉了，攻击变为0.");
+                    //computer1.count = 0;
+                }
+            }
+            if (user_id == 3)
+            {
+                //Utanus
+                computer2_blood = computer2_blood - count;
+                if (computer2_blood <= 0)
+                {
+                    MessageBox.Show("Utanus挂掉了，攻击变为0.");
+                    //computer2.count = 0;
+                }
+            }
+        }
+
     }
 }
