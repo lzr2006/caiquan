@@ -12,7 +12,8 @@
 **1.1启动**
 
 
-前往https://toysworld.lanzous.com/in17alfbgtc>下载Demo1包。
+前往https://toysworld.lanzous.com/in17alfbgtc 下载Demo1E1包。
+体验更好的头像前往https://toysworld.lanzous.com/iJZVWlfsipc 下载Demo1E2包。
 
 打开程序包，有一个exe文件，打开运行即可。
 
