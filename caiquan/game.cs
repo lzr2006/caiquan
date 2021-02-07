@@ -28,7 +28,11 @@ namespace caiquan
             InitializeComponent();
         }
 
+
         private void game_Load(object sender, EventArgs e) {
+
+
+
             //Thread th = new Thread(timer1_Tick);
             RanName rn = new RanName();
             //获取程序运行路径
@@ -281,7 +285,7 @@ namespace caiquan
         //  }
         #endregion
 
-        private void timer1_Tick(object sender, EventArgs e)
+        public void timer1_Tick(object sender, EventArgs e)
         {
             #region 更新血量和攻击
             //实时更新血量
@@ -315,10 +319,14 @@ namespace caiquan
 
             if (computer2_blood <= 0)
             {
-                label8.Text = "已经没了";
+                label3.Text = "已经没了";
                 computer2_count = 0;
             }
 
+            if (computer1_blood <= 0 && computer2_blood <= 0)
+            {
+                label19.Text = "恭喜玩家胜利！";
+            }
             #endregion
         }
         #region 暂时废弃:减血函数
