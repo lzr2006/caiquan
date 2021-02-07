@@ -12,7 +12,7 @@
 **1.1启动**
 
 
-前往<https://wws.lanzous.com/ifanIleblyb>下载Demo1包。
+前往https://toysworld.lanzous.com/in17alfbgtc>下载Demo1包。
 
 打开程序包，有一个exe文件，打开运行即可。
 
