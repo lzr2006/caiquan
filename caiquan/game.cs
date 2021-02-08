@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using caiquan;
 using System.Threading;
+using System.Windows.Forms;
+
 namespace caiquan
 {
     public partial class game : Form
@@ -21,6 +14,11 @@ namespace caiquan
         int user_count = 1; //用户攻击力
         int computer1_count = 1; //Voctor攻击力
         int computer2_count = 1; //Utanus攻击力
+        int user_truth_count = 1;
+        int computer1_truth_count = 1;
+        int computer2_truth_count = 1; //真实攻击力
+        bool user_is_die = false; //用户是否挂掉
+        bool started = false; //电脑自动攻击线程是否开启
         #endregion
 
         public game()
@@ -30,22 +28,40 @@ namespace caiquan
 
 
         private void game_Load(object sender, EventArgs e) {
+            string local = Application.StartupPath;
 
-
+            //SoundPlayer sp = new SoundPlayer();
+            //sp.SoundLocation = local + @"\\accets\\song.wav";
+            //sp.PlayLooping();
 
             //Thread th = new Thread(timer1_Tick);
             RanName rn = new RanName();
-            //获取程序运行路径
-            string local = Application.StartupPath;
-
-
-            //user_blood = 5;
-            //computer1_blood = 5;
-            //computer2_blood = 5;
-            //user_count = 1;
-            //computer1_count = 1;
-            //computer2_count = 1;
-
+            #region 判断地主
+            Random rda = new Random();
+            int boss = rda.Next(1, 4);
+            //解析地主 c1 -> label21 c2 -> label23 user -> label25
+            if (boss == 1)
+            {
+                //玩家为地主
+                label25.Text = "地主";
+                label23.Text = "农民";
+                label21.Text = "农民";
+            }
+            if (boss == 2)
+            {
+                //Victor为地主
+                label21.Text = "地主";
+                label23.Text = "农民";
+                label25.Text = "农民";
+            }
+            if (boss == 3)
+            {
+                //Utanus为地主
+                label23.Text = "地主";
+                label25.Text = "农民";
+                label21.Text = "农民";
+            }
+            #endregion
             #region 加载图片
             try
             {
@@ -76,16 +92,7 @@ namespace caiquan
             
         }
         #endregion
-
-        //private void label2_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-            
-
-
-        #region 用户选择按钮点击事件
+            #region 用户选择按钮点击事件
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -115,21 +122,23 @@ namespace caiquan
         }
 
         #endregion
-        #region 废函数
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
 
         private void button10_Click(object sender, EventArgs e)
         {
+            //优先终止线程
+
+            if (user_is_die)
+            {
+                //多线程：线程 电脑自动战斗
+                Thread autos = new Thread(auto);
+                autos.Start();
+                if (started)
+                {
+                    autos.Abort();
+                }
+                started = true;
+                
+            }
             game gm = new game();
             //电脑随机选择
 
@@ -137,7 +146,6 @@ namespace caiquan
 
             int p1 = cm.Next(1, 4); //第一个电脑用户选择
             int p2 = cm.Next(1, 4); //第二个电脑用户选择
-
             #region 按钮上色
 
             //电脑用户1:Utanus
@@ -187,11 +195,8 @@ namespace caiquan
 
             //button1.BackColor=button2.BackColor=button3.BackColor=System.Drawing.Color.Chartreuse; 影响观感
             #endregion
-
-
             Core cr = new Core();
             int winner = cr.winner(p1, p2, user_choose);
-
             #region 解析核心算法
             if (winner == 0)
             {
@@ -203,8 +208,6 @@ namespace caiquan
             if (winner == 1)
             {
                 MessageBox.Show("Utanus单独胜利");
-                //gm.LessBlood(2, computer2_count);
-                //gm.LessBlood(1, computer2_count);
                 user_blood = user_blood - computer2_count;
                 computer1_blood = computer1_blood - computer2_count;
                 label17.Text = "-" + computer2_count.ToString();
@@ -214,8 +217,6 @@ namespace caiquan
             if (winner == 2)
             {
                 MessageBox.Show("Victor单独胜利");
-                //gm.LessBlood(1, computer1_count);
-                //gm.LessBlood(3, computer1_count);
                 computer2_blood = computer2_blood - computer1_count;
                 user_blood = user_blood - computer1_count;
                 label16.Text = "-" + computer1_count.ToString();
@@ -225,7 +226,6 @@ namespace caiquan
             if (winner == 3)
             {
                 MessageBox.Show("Utanus与user同时胜利");
-                // gm.LessBlood(2, computer2_count + user_count);
                 computer1_blood = computer1_blood - computer2_count - user_count;
                 int test = computer2_count + user_count;
                 label17.Text = "-" + test.ToString();
@@ -267,9 +267,6 @@ namespace caiquan
 
             }
             #endregion
-
-            
-
         }
 
 
@@ -305,9 +302,10 @@ namespace caiquan
             if (user_blood <= 0)
             {
                 // MessageBox.Show("你输了！" + user_count.ToString(), user_blood.ToString());
-                System.Environment.Exit(0);
-
-
+                //System.Environment.Exit(0);
+                label1.Text = "已经没了";
+                user_count = 0;
+                user_is_die = true;
             }
 
             if (computer1_blood <= 0)
@@ -327,8 +325,28 @@ namespace caiquan
             {
                 label19.Text = "恭喜玩家胜利！";
             }
+            if (user_is_die)
+            {
+                if (computer1_blood <= 0)
+                {
+                    label2.Text = "已经没了";
+                    computer1_count = 0;
+                    
+
+                }
+
+                if (computer2_blood <= 0)
+                {
+                    label3.Text = "已经没了";
+                    computer2_count = 0;
+                }
+            }
             #endregion
         }
+
+
+
+
         #region 暂时废弃:减血函数
         //public void LessBlood(int user_id, int count) {
 
@@ -369,11 +387,47 @@ namespace caiquan
         // }
         #endregion
 
-        private void label5_Click(object sender, EventArgs e)
+        #region 输赢测试函数(已经测试完毕)
+        //private void button11_Click(object sender, EventArgs e)
+        //{
+        //    SwitchWinner sw = new SwitchWinner();
+        //    int[] islife = {2,3};
+        //    List<int> result = new List<int>();
+        //    result = sw.getwin(1, islife);
+        //    foreach (var item in result)
+        //    {
+        //        MessageBox.Show(item.ToString());
+        //    }
+        // }
+        #endregion
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
 
+        public void auto()
+        {
+            //用户挂掉后，电脑1和电脑3互相攻击的函数
+            button10.Text = "有电脑用户没了";
+            Core cr = new Core();
+            Random cm = new Random();
+            int p1 = cm.Next(); //第一个电脑用户选择
+            int p2 = cm.Next(); //第二个电脑用户选择
+            int win = cr.cwinner(p1,p2);
+            #region 解析算法
+            if (win == 1)
+            {
+                computer2_blood = computer2_blood - computer1_count;
+                label18.Text = "-" + computer1_count.ToString();
+            }
+            if (win == 2)
+            {
+                computer1_blood = computer1_blood - computer2_count;
+                label17.Text = "-" + computer2_count.ToString();
+            }
+            #endregion
 
+        }
     }
 }

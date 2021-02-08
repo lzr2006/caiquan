@@ -65,6 +65,13 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -80,6 +87,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(397, 369);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(203, 214);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -104,6 +112,7 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作区";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button3
             // 
@@ -148,6 +157,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(-2, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(203, 214);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
@@ -168,6 +178,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(918, 1);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(203, 214);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
             // 
@@ -212,7 +223,6 @@
             this.button5.TabIndex = 1;
             this.button5.Text = "石头";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -223,7 +233,6 @@
             this.button4.TabIndex = 0;
             this.button4.Text = "剪刀";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox3
             // 
@@ -272,7 +281,7 @@
             this.button10.BackColor = System.Drawing.Color.Cyan;
             this.button10.Location = new System.Drawing.Point(610, 435);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(94, 38);
+            this.button10.Size = new System.Drawing.Size(134, 38);
             this.button10.TabIndex = 10;
             this.button10.Text = "确认";
             this.button10.UseVisualStyleBackColor = false;
@@ -297,7 +306,6 @@
             this.label5.Size = new System.Drawing.Size(58, 24);
             this.label5.TabIndex = 12;
             this.label5.Text = "错误";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -420,7 +428,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("华文行楷", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(43, 280);
+            this.label17.Location = new System.Drawing.Point(33, 320);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(61, 46);
             this.label17.TabIndex = 24;
@@ -431,7 +439,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("华文行楷", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(1005, 280);
+            this.label18.Location = new System.Drawing.Point(1005, 320);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(61, 46);
             this.label18.TabIndex = 25;
@@ -446,11 +454,86 @@
             this.label19.Size = new System.Drawing.Size(0, 36);
             this.label19.TabIndex = 26;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(211, 202);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(0, 18);
+            this.label20.TabIndex = 27;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label21.Location = new System.Drawing.Point(76, 266);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(58, 24);
+            this.label21.TabIndex = 29;
+            this.label21.Text = "错误";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label22.Location = new System.Drawing.Point(12, 266);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(82, 24);
+            this.label22.TabIndex = 28;
+            this.label22.Text = "身份：";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label23.Location = new System.Drawing.Point(1048, 266);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 24);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "错误";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label24.Location = new System.Drawing.Point(984, 266);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(82, 24);
+            this.label24.TabIndex = 30;
+            this.label24.Text = "身份：";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label25.Location = new System.Drawing.Point(671, 551);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(58, 24);
+            this.label25.TabIndex = 33;
+            this.label25.Text = "错误";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.Location = new System.Drawing.Point(607, 551);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(82, 24);
+            this.label26.TabIndex = 32;
+            this.label26.Text = "身份：";
+            // 
             // game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 766);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -529,5 +612,12 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
     }
 }

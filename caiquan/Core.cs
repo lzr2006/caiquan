@@ -134,8 +134,32 @@ namespace caiquan
 
 
         }
-
         #endregion
+        #region 电脑自动战斗算法
+        public int cwinner(int computer1,int computer2)
+        {
+            if (computer1 == computer2)
+            {
+                return 0;
+            }
+            if (computer1 == 1 && computer2 == 3)
+            {
+                return 1;
+            }
+            if (computer1 == 3 && computer2 == 1)
+            {
+                return 2;
+            }
+            if (computer1 > computer2)
+            {
+                return 1;
+            }
+            if (computer1 < computer2)
+            {
+                return 2;
+            }
+            return 0;
+            #endregion
+        }
     }
-
 }
