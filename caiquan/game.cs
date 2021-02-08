@@ -18,7 +18,8 @@ namespace caiquan
         int computer1_truth_count = 1;
         int computer2_truth_count = 1; //真实攻击力
         bool user_is_die = false; //用户是否挂掉
-        bool started = false; //电脑自动攻击线程是否开启
+        //bool started = false; //电脑自动攻击线程是否开启
+        bool end = false; //是否终止线程
         #endregion
 
         public game()
@@ -127,18 +128,7 @@ namespace caiquan
         {
             //优先终止线程
 
-            if (user_is_die)
-            {
-                //多线程：线程 电脑自动战斗
-                Thread autos = new Thread(auto);
-                autos.Start();
-                if (started)
-                {
-                    autos.Abort();
-                }
-                started = true;
-                
-            }
+
             game gm = new game();
             //电脑随机选择
 
@@ -325,6 +315,14 @@ namespace caiquan
             {
                 label19.Text = "恭喜玩家胜利！";
             }
+            if (computer1_blood <= 0 && user_blood <= 0)
+            {
+                label19.Text = "恭喜Utanus胜利！";
+            }
+            if (computer2_blood <= 0 && user_blood <= 0)
+            {
+                label19.Text = "恭喜Victor胜利！";
+            }
             if (user_is_die)
             {
                 if (computer1_blood <= 0)
@@ -408,26 +406,44 @@ namespace caiquan
 
         public void auto()
         {
-            //用户挂掉后，电脑1和电脑3互相攻击的函数
-            button10.Text = "有电脑用户没了";
-            Core cr = new Core();
-            Random cm = new Random();
-            int p1 = cm.Next(); //第一个电脑用户选择
-            int p2 = cm.Next(); //第二个电脑用户选择
-            int win = cr.cwinner(p1,p2);
-            #region 解析算法
-            if (win == 1)
-            {
-                computer2_blood = computer2_blood - computer1_count;
-                label18.Text = "-" + computer1_count.ToString();
-            }
-            if (win == 2)
-            {
-                computer1_blood = computer1_blood - computer2_count;
-                label17.Text = "-" + computer2_count.ToString();
-            }
-            #endregion
 
+                //用户挂掉后，电脑1和电脑3互相攻击的函数
+                Core cr = new Core();
+                Random cm = new Random();
+                int p1 = cm.Next(); //第一个电脑用户选择
+                int p2 = cm.Next(); //第二个电脑用户选择
+                int win = cr.cwinner(p1, p2);
+                #region 解析算法
+                if (win == 1)
+                {
+                    computer2_blood = computer2_blood - computer1_count;
+                    label18.Text = "-" + computer1_count.ToString();
+                }
+                if (win == 2)
+                {
+                    computer1_blood = computer1_blood - computer2_count;
+                    label17.Text = "-" + computer2_count.ToString();
+                }
+                #endregion
+
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (user_blood <= 0)
+            {
+
+                if (computer1_blood != 0 && computer2_blood != 0)
+                {
+                    auto();
+                }
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            user_blood = 1;
         }
     }
 }
