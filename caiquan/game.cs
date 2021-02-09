@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -17,9 +18,18 @@ namespace caiquan
         int user_truth_count = 1;
         int computer1_truth_count = 1;
         int computer2_truth_count = 1; //真实攻击力
+        int user_truth_blood = 5;
+        int computer1_truth_blood = 5;
+        int computer2_truth_blood = 5; //真实血量
+        int boss; //地主索引
         bool user_is_die = false; //用户是否挂掉
-        //bool started = false; //电脑自动攻击线程是否开启
         bool end = false; //是否终止线程
+        bool whowin = false; //是否判断输赢情况
+        bool do_windo = false; //是否判断输赢
+        bool alllife = true; //电脑全部存活
+        int[] islife; //生存玩家
+        int[] results; //转换后的输赢情况
+        List<int> islifeing = new List<int>(); //生存玩家
         #endregion
 
         public game()
@@ -37,9 +47,11 @@ namespace caiquan
 
             //Thread th = new Thread(timer1_Tick);
             RanName rn = new RanName();
+
             #region 判断地主
-            Random rda = new Random();
-            int boss = rda.Next(1, 4);
+            Random rd = new Random();
+            boss = rd.Next(1, 4);
+
             //解析地主 c1 -> label21 c2 -> label23 user -> label25
             if (boss == 1)
             {
@@ -66,7 +78,6 @@ namespace caiquan
             #region 加载图片
             try
             {
-                Random rd = new Random();
                 int rm = rd.Next(1, 11);
                 string path1 = rn.gets(local,rm);
                 rm = rd.Next(1, 11);
@@ -89,11 +100,15 @@ namespace caiquan
                 MessageBox.Show("缺失类或图片！");
 
             }
-
-            
+            #endregion
+            #region 初始化用户
+            islifeing.Add(1);
+            islifeing.Add(2);
+            islifeing.Add(3);
+            #endregion
         }
-        #endregion
-            #region 用户选择按钮点击事件
+
+        #region 用户选择按钮点击事件
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -123,6 +138,8 @@ namespace caiquan
         }
 
         #endregion
+
+
 
         private void button10_Click(object sender, EventArgs e)
         {
@@ -256,7 +273,7 @@ namespace caiquan
                 label16.Text = "-0";
 
             }
-            #endregion
+            #endregion 
         }
 
 
@@ -287,7 +304,6 @@ namespace caiquan
             label11.Text = computer2_count.ToString();
             
             #endregion
-
             #region 判断是否挂掉
             if (user_blood <= 0)
             {
@@ -296,12 +312,16 @@ namespace caiquan
                 label1.Text = "已经没了";
                 user_count = 0;
                 user_is_die = true;
+                islifeing.Remove(1);
+                whowin = true;
             }
 
             if (computer1_blood <= 0)
             {
                 label2.Text = "已经没了";
                 computer1_count = 0;
+                islifeing.Remove(2);
+                whowin = true;
 
             }
 
@@ -309,20 +329,31 @@ namespace caiquan
             {
                 label3.Text = "已经没了";
                 computer2_count = 0;
+                islifeing.Remove(3);
+                whowin = true;
             }
 
-            if (computer1_blood <= 0 && computer2_blood <= 0)
-            {
-                label19.Text = "恭喜玩家胜利！";
-            }
-            if (computer1_blood <= 0 && user_blood <= 0)
-            {
-                label19.Text = "恭喜Utanus胜利！";
-            }
-            if (computer2_blood <= 0 && user_blood <= 0)
-            {
-                label19.Text = "恭喜Victor胜利！";
-            }
+            //if (computer1_blood <= 0 && computer2_blood <= 0)
+            //{
+            //    label19.Text = "恭喜玩家胜利！";
+            //    islifeing.Remove(2);
+            //    islifeing.Remove(3);
+            //    whowin = true;
+            //}
+            //if (computer1_blood <= 0 && user_blood <= 0)
+            //{
+            //    label19.Text = "恭喜Utanus胜利！";
+            //    islifeing.Remove(1);
+            //    islifeing.Remove(2);
+            //    whowin = true;
+            //}
+            //if (computer2_blood <= 0 && user_blood <= 0)
+            //{
+            //    label19.Text = "恭喜Victor胜利！";
+            //    islifeing.Remove(1);
+            //    islifeing.Remove(3);
+            //    whowin = true;
+            //}
             if (user_is_die)
             {
                 if (computer1_blood <= 0)
@@ -341,9 +372,6 @@ namespace caiquan
             }
             #endregion
         }
-
-
-
 
         #region 暂时废弃:减血函数
         //public void LessBlood(int user_id, int count) {
@@ -384,7 +412,6 @@ namespace caiquan
         //}
         // }
         #endregion
-
         #region 输赢测试函数(已经测试完毕)
         //private void button11_Click(object sender, EventArgs e)
         //{
@@ -406,14 +433,17 @@ namespace caiquan
 
         public void auto()
         {
-
+            if (alllife)
+            {
                 //用户挂掉后，电脑1和电脑3互相攻击的函数
                 Core cr = new Core();
                 Random cm = new Random();
                 int p1 = cm.Next(); //第一个电脑用户选择
                 int p2 = cm.Next(); //第二个电脑用户选择
                 int win = cr.cwinner(p1, p2);
-                #region 解析算法
+
+
+                #region 解析算法 减血回显
                 if (win == 1)
                 {
                     computer2_blood = computer2_blood - computer1_count;
@@ -424,6 +454,7 @@ namespace caiquan
                     computer1_blood = computer1_blood - computer2_count;
                     label17.Text = "-" + computer2_count.ToString();
                 }
+            }
                 #endregion
 
 
@@ -437,13 +468,177 @@ namespace caiquan
                 if (computer1_blood != 0 && computer2_blood != 0)
                 {
                     auto();
+
                 }
+            }
+
+            if (computer1_blood == 1 || computer2_blood == 0)
+            {
+                alllife = false;
+                //停止电脑互怼行为
             }
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             user_blood = 1;
+        }
+
+        public void getwhowin()
+        {
+            if (whowin)
+            {
+                SwitchWinner sw = new SwitchWinner();
+                //转换并传入参数
+                islifeing.Sort();
+                islife = islifeing.ToArray();
+                List<int> result = new List<int>();
+                result = sw.getwin(boss, islife); //接收数据
+                result.Sort();
+                results = result.ToArray();
+                //自动结束调用 等待下一次调用
+                whowin = false;
+                //打开判断输赢的函数执行通道
+                do_windo = true;
+            }
+        }
+
+        #region 胜利解析算法(新)
+        //喜报:算法于2020.2.9 11:23 测试成功
+        public void windo()
+        {
+            if (do_windo)
+            {
+                Random rd = new Random();
+                int summer = rd.Next(1, 3);
+                if (results.Length == 1)
+                {
+                    if (results[0] == 404)
+                    {
+                        //谁都没赢
+                        whowin = false;
+                    }
+
+                    //l9
+
+                    //错误处理记录:数组越界:数组索引从0开始
+                    if (results[0] == 1)
+                    {
+                        //玩家胜利
+                        label19.Text = "恭喜玩家胜利!";
+                        if(summer == 1)
+                        {
+                            user_truth_count++;
+                        }
+                        if (summer == 2)
+                        {
+                            user_truth_blood++;
+                        }
+
+                    }
+
+                    if (results[0] == 2)
+                    {
+                        //Victor胜利
+                        label19.Text = "恭喜Victor胜利!";
+                        if (summer == 1)
+                        {
+                            computer1_truth_count++;
+                        }
+                        if (summer == 5)
+                        {
+                            computer1_truth_blood++;
+                        }
+                    }
+                    if (results[0] == 3)
+                    {
+                        //Utanus胜利
+                        label19.Text = "恭喜Utanus胜利!";
+                    }
+                    if (summer == 1)
+                    {
+                        computer2_truth_blood++;
+                    }
+                    if (summer == 2)
+                    {
+                        computer2_truth_count++;
+                    }
+                }
+
+                if (results.Length == 2)
+                {
+                    //1,2 2,3 1,3 顺序不确定
+                    int sum = 0;
+
+                    foreach (int item in results)
+                    {
+                        sum = sum + item;
+                    }
+
+                    if (sum == 3)
+                    {
+                        label19.Text = "恭喜user和Victor同时胜利!";
+                        if (summer == 1)
+                        {
+                            user_truth_count++;
+                            computer1_truth_count++;
+                        }
+                        if (summer == 2)
+                        {
+                            user_truth_blood++;
+                            computer1_truth_blood++;
+                            
+                        }
+                    }
+                    if (sum == 4)
+                    {
+                        label19.Text = "恭喜user和Utanus同时胜利!";
+                        if(summer == 1)
+                        {
+                            user_truth_count++;
+                            computer2_truth_count++;
+                        }
+                        if (summer == 2)
+                        {
+                            user_truth_blood++;
+                            computer2_truth_blood++;
+                        }
+                    }
+                    if (sum == 5)
+                    {
+                        label19.Text = "恭喜Victor和Utanus同时胜利!";
+                        if (summer == 1)
+                        {
+                            computer1_truth_count++;
+                            computer2_truth_count++;
+                        }
+                        if (summer == 2)
+                        {
+                            computer1_truth_blood++;
+                            computer2_truth_blood++;
+                        }
+                    }
+                }
+            }
+            //关闭执行命令 等待下一次执行
+            do_windo = false;
+        }
+        #endregion
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            getwhowin();
+            windo();
+        }
+        public void restart()
+        {
+            //一局结束 恢复参数
+            user_blood = user_truth_blood;
+            computer1_blood = computer1_truth_blood;
+            computer2_blood = computer2_truth_blood;
+            user_count = user_truth_count;
+            computer1_count = computer1_truth_count;
+            computer2_count = computer2_truth_count; //补全血量和攻击
         }
     }
 }

@@ -74,6 +74,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.button11 = new System.Windows.Forms.Button();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -527,6 +528,7 @@
             // timer2
             // 
             this.timer2.Enabled = true;
+            this.timer2.Interval = 600;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // button11
@@ -538,6 +540,11 @@
             this.button11.Text = "1";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // timer3
+            // 
+            this.timer3.Enabled = true;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // game
             // 
@@ -639,5 +646,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Timer timer3;
     }
 }
