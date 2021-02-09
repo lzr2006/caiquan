@@ -73,8 +73,10 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.button11 = new System.Windows.Forms.Button();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -531,26 +533,43 @@
             this.timer2.Interval = 600;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(1085, 435);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(21, 152);
-            this.button11.TabIndex = 34;
-            this.button11.Text = "1";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
             // timer3
             // 
             this.timer3.Enabled = true;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(959, 542);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(35, 117);
+            this.button12.TabIndex = 37;
+            this.button12.Text = "restart_test";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(1013, 519);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(21, 152);
+            this.button11.TabIndex = 36;
+            this.button11.Text = "1";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // timer4
+            // 
+            this.timer4.Enabled = true;
+            this.timer4.Interval = 825;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
             // game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 766);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label26);
@@ -645,7 +664,9 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Timer timer4;
     }
 }

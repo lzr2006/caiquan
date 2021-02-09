@@ -27,6 +27,12 @@ namespace caiquan
         bool whowin = false; //是否判断输赢情况
         bool do_windo = false; //是否判断输赢
         bool alllife = true; //电脑全部存活
+        bool user_truth_blood_sum = false; //用户加血
+        bool user_truth_count_sum = false; //用户加攻击
+        bool computer1_truth_blood_sum = false; //Victor加血
+        bool computer1_truth_count_sum = false; //Victor加攻击
+        bool computer2_truth_blood_sum = false; //Utanus加血
+        bool computer2_truth_count_sum = false; //Utanus加攻击
         int[] islife; //生存玩家
         int[] results; //转换后的输赢情况
         List<int> islifeing = new List<int>(); //生存玩家
@@ -102,6 +108,7 @@ namespace caiquan
             }
             #endregion
             #region 初始化用户
+            islifeing.Clear();
             islifeing.Add(1);
             islifeing.Add(2);
             islifeing.Add(3);
@@ -472,7 +479,7 @@ namespace caiquan
                 }
             }
 
-            if (computer1_blood == 1 || computer2_blood == 0)
+            if (computer1_blood <= 0 || computer2_blood <= 0)
             {
                 alllife = false;
                 //停止电脑互怼行为
@@ -528,7 +535,7 @@ namespace caiquan
                         label19.Text = "恭喜玩家胜利!";
                         if(summer == 1)
                         {
-                            user_truth_count++;
+                            user_truth_count_sum = true;
                         }
                         if (summer == 2)
                         {
@@ -543,11 +550,11 @@ namespace caiquan
                         label19.Text = "恭喜Victor胜利!";
                         if (summer == 1)
                         {
-                            computer1_truth_count++;
+                            computer1_truth_count_sum = true;
                         }
                         if (summer == 5)
                         {
-                            computer1_truth_blood++;
+                            computer1_truth_blood_sum = true;
                         }
                     }
                     if (results[0] == 3)
@@ -557,11 +564,11 @@ namespace caiquan
                     }
                     if (summer == 1)
                     {
-                        computer2_truth_blood++;
+                        computer2_truth_blood_sum = true;
                     }
                     if (summer == 2)
                     {
-                        computer2_truth_count++;
+                        computer2_truth_count_sum = true;
                     }
                 }
 
@@ -580,13 +587,13 @@ namespace caiquan
                         label19.Text = "恭喜user和Victor同时胜利!";
                         if (summer == 1)
                         {
-                            user_truth_count++;
-                            computer1_truth_count++;
+                            user_truth_count_sum = true;
+                            computer1_truth_count_sum = true;
                         }
                         if (summer == 2)
                         {
-                            user_truth_blood++;
-                            computer1_truth_blood++;
+                            user_truth_blood_sum = true;
+                            computer1_truth_blood_sum = true;
                             
                         }
                     }
@@ -595,13 +602,13 @@ namespace caiquan
                         label19.Text = "恭喜user和Utanus同时胜利!";
                         if(summer == 1)
                         {
-                            user_truth_count++;
-                            computer2_truth_count++;
+                            user_truth_count_sum = true;
+                            computer2_truth_count_sum = true; 
                         }
                         if (summer == 2)
                         {
-                            user_truth_blood++;
-                            computer2_truth_blood++;
+                            user_truth_blood_sum = true;
+                            computer2_truth_blood_sum = true;
                         }
                     }
                     if (sum == 5)
@@ -609,13 +616,13 @@ namespace caiquan
                         label19.Text = "恭喜Victor和Utanus同时胜利!";
                         if (summer == 1)
                         {
-                            computer1_truth_count++;
-                            computer2_truth_count++;
+                            computer1_truth_count_sum = true;
+                            computer2_truth_count_sum = true;
                         }
                         if (summer == 2)
                         {
-                            computer1_truth_blood++;
-                            computer2_truth_blood++;
+                            computer1_truth_blood_sum = true;
+                            computer2_truth_blood_sum = true;
                         }
                     }
                 }
@@ -632,13 +639,105 @@ namespace caiquan
         }
         public void restart()
         {
+            #region 继续重开
             //一局结束 恢复参数
+            alllife = true;
             user_blood = user_truth_blood;
             computer1_blood = computer1_truth_blood;
             computer2_blood = computer2_truth_blood;
             user_count = user_truth_count;
             computer1_count = computer1_truth_count;
             computer2_count = computer2_truth_count; //补全血量和攻击
+            label19.Text = string.Empty;
+            label2.Text = "姓名：Victor";
+            label3.Text = "姓名：Utanus";
+            label1.Text = "姓名：我"; //基本标签
+            #endregion
+            #region 判断地主
+            Random rd = new Random();
+            boss = rd.Next(1, 4);
+
+            //解析地主 c1 -> label21 c2 -> label23 user -> label25
+            if (boss == 1)
+            {
+                //玩家为地主
+                label25.Text = "地主";
+                label23.Text = "农民";
+                label21.Text = "农民";
+            }
+            if (boss == 2)
+            {
+                //Victor为地主
+                label21.Text = "地主";
+                label23.Text = "农民";
+                label25.Text = "农民";
+            }
+            if (boss == 3)
+            {
+                //Utanus为地主
+                label23.Text = "地主";
+                label25.Text = "农民";
+                label21.Text = "农民";
+            }
+            #endregion
+            #region 初始化用户
+            islifeing.Clear();
+            islifeing.Add(1);
+            islifeing.Add(2);
+            islifeing.Add(3);
+            #endregion
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            restart();
+        }
+
+        public void zengyi()
+        {
+            #region 增加属性函数
+
+         
+                //这是一个死循环
+                if (user_truth_blood_sum)
+                {
+                    user_blood++;
+                    user_truth_blood_sum = false;
+                }
+                if (user_truth_count_sum)
+                {
+                    user_count++;
+                    user_truth_count_sum = false;
+                }
+                if (computer1_truth_blood_sum)
+                {
+                    computer1_blood++;
+                    computer1_truth_blood_sum = false;
+                }
+                if (computer1_truth_count_sum)
+                {
+                    computer1_count++;
+                    computer1_truth_count_sum = false;
+                }
+                if (computer2_truth_blood_sum)
+                {
+                    computer2_blood++;
+                    computer2_truth_blood_sum = false;
+                }
+                if (computer2_truth_count_sum)
+                {
+                    computer2_count++;
+                    computer2_truth_count_sum = false;
+                }
+                #endregion
+        
+
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            //修复惊天bug
+            zengyi();
         }
     }
 }
