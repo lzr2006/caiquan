@@ -701,17 +701,17 @@ namespace caiquan
                 //这是一个死循环
                 if (user_truth_blood_sum)
                 {
-                    user_blood++;
+                    user_truth_blood++;
                     user_truth_blood_sum = false;
                 }
                 if (user_truth_count_sum)
                 {
-                    user_count++;
+                    user_truth_count++;
                     user_truth_count_sum = false;
                 }
                 if (computer1_truth_blood_sum)
                 {
-                    computer1_blood++;
+                    computer1_truth_blood++;
                     computer1_truth_blood_sum = false;
                 }
                 if (computer1_truth_count_sum)
@@ -721,12 +721,12 @@ namespace caiquan
                 }
                 if (computer2_truth_blood_sum)
                 {
-                    computer2_blood++;
+                    computer2_truth_blood++;
                     computer2_truth_blood_sum = false;
                 }
                 if (computer2_truth_count_sum)
                 {
-                    computer2_count++;
+                    computer2_truth_count++;
                     computer2_truth_count_sum = false;
                 }
                 #endregion
