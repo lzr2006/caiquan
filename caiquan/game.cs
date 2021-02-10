@@ -22,10 +22,14 @@ namespace caiquan
         int computer1_truth_blood = 5;
         int computer2_truth_blood = 5; //真实血量
         int boss; //地主索引
+        int user_material;
+        int computer1_material;
+        int computer2_material; //属性
         bool user_is_die = false; //用户是否挂掉
         bool end = false; //是否终止线程
         bool whowin = false; //是否判断输赢情况
         bool do_windo = false; //是否判断输赢
+        bool is_switch = false; //已经判断过一次
         bool alllife = true; //电脑全部存活
         bool user_truth_blood_sum = false; //用户加血
         bool user_truth_count_sum = false; //用户加攻击
@@ -79,6 +83,39 @@ namespace caiquan
                 label23.Text = "地主";
                 label25.Text = "农民";
                 label21.Text = "农民";
+            }
+            #endregion
+            #region 判断属性
+            int sx = rd.Next(1, 4);
+            if (sx == 1)
+            {
+                user_material = 1;
+                label30.BackColor = System.Drawing.Color.Red;
+                label30.Text = "火";
+                label32.BackColor = System.Drawing.Color.White;
+                label34.BackColor = System.Drawing.Color.White;
+                label32.Text = "普通";
+                label34.Text = "普通";
+            }
+            if (sx == 2)
+            {
+                computer1_material = 1;
+                label32.BackColor = System.Drawing.Color.Red;
+                label32.Text = "火";
+                label30.BackColor = System.Drawing.Color.White;
+                label34.BackColor = System.Drawing.Color.White;
+                label30.Text = "普通";
+                label34.Text = "普通";
+            }
+            if (sx == 3)
+            {
+                computer2_material = 1;
+                label34.BackColor = System.Drawing.Color.Red;
+                label34.Text = "火";
+                label32.BackColor = System.Drawing.Color.White;
+                label30.BackColor = System.Drawing.Color.White;
+                label30.Text = "普通";
+                label32.Text = "普通";
             }
             #endregion
             #region 加载图片
@@ -212,34 +249,76 @@ namespace caiquan
             Core cr = new Core();
             int winner = cr.winner(p1, p2, user_choose);
             #region 解析核心算法
+            Material ma = new Material();
             if (winner == 0)
             {
                 MessageBox.Show("平局");
+                label27.Text = label28.Text = label29.Text = "普通攻击";
                 label16.Text = "-0";
                 label17.Text = "-0";
                 label18.Text = "-0";
             }
             if (winner == 1)
             {
-                MessageBox.Show("Utanus单独胜利");
-                user_blood = user_blood - computer2_count;
-                computer1_blood = computer1_blood - computer2_count;
-                label17.Text = "-" + computer2_count.ToString();
-                label16.Text = "-" + computer2_count.ToString();
-                label18.Text = "-0";
+                
+
+                if (computer1_material == 1)
+                {
+                    //火属性
+                    MessageBox.Show("Utanus单独胜利");
+                    user_blood = user_blood - computer2_count;
+                    computer1_blood = computer1_blood - computer2_count;
+                    label27.Text = label29.Text = "烈火灼伤";
+                    int c2 = ma.fire(computer2_count);
+                    user_blood = user_blood - c2;
+                    computer1_blood = computer1_blood - c2;
+                    label17.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+                    label16.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("Utanus单独胜利");
+                    label27.Text = label28.Text = label29.Text = "普通攻击";
+                    user_blood = user_blood - computer2_count;
+                    computer1_blood = computer1_blood - computer2_count;
+                    label17.Text = "-" + computer2_count.ToString();
+                    label16.Text = "-" + computer2_count.ToString();
+                    label18.Text = "-0";
+                }
             }
             if (winner == 2)
             {
-                MessageBox.Show("Victor单独胜利");
-                computer2_blood = computer2_blood - computer1_count;
-                user_blood = user_blood - computer1_count;
-                label16.Text = "-" + computer1_count.ToString();
-                label18.Text = "-" + computer1_count.ToString();
-                label17.Text = "-0";
+                if (computer2_material == 1)
+                {
+
+                        MessageBox.Show("Victor单独胜利");
+                        //火属性
+                        user_blood = user_blood - computer1_count;
+                        computer2_blood = computer2_blood - computer1_count;
+                        label28.Text = label29.Text = "烈火灼伤";
+                        int c2 = ma.fire(computer2_count);
+                        user_blood = user_blood - c2;
+                        computer2_blood = computer2_blood - c2;
+                        label18.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+                        label16.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+
+                    }
+                
+
+                else{
+                    MessageBox.Show("Victor单独胜利");
+                    label27.Text = label28.Text = label29.Text = "普通攻击";
+                    computer2_blood = computer2_blood - computer1_count;
+                    user_blood = user_blood - computer1_count;
+                    label16.Text = "-" + computer1_count.ToString();
+                    label18.Text = "-" + computer1_count.ToString();
+                    label17.Text = "-0"; }
             }
             if (winner == 3)
             {
                 MessageBox.Show("Utanus与user同时胜利");
+                label27.Text = label28.Text = label29.Text = "普通攻击";
                 computer1_blood = computer1_blood - computer2_count - user_count;
                 int test = computer2_count + user_count;
                 label17.Text = "-" + test.ToString();
@@ -249,6 +328,7 @@ namespace caiquan
             if (winner == 4)
             {
                 MessageBox.Show("Victor与user同时胜利");
+                label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(3, computer1_count + user_count);
                 computer2_blood = computer2_blood - computer1_count - user_count;
                 int test = user_count + computer1_count;
@@ -260,6 +340,7 @@ namespace caiquan
             if (winner == 5)
             {
                 MessageBox.Show("Victor与Utanus同时胜利");
+                label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(1, computer1_count + computer2_count);
                 user_blood = user_blood - computer1_count - computer2_count;
                 int test = computer1_count + computer2_count;
@@ -270,15 +351,33 @@ namespace caiquan
             }
             if (winner == 6)
             {
-                MessageBox.Show("user单独胜利");
-                //gm.LessBlood(2, user_count);
-                //gm.LessBlood(3, user_count);
-                computer2_blood = computer2_blood - user_count;
-                computer1_blood = computer1_blood - user_count;
-                label17.Text = "-" + user_count.ToString();
-                label18.Text = "-" + user_count.ToString();
-                label16.Text = "-0";
+                if (user_material == 1)
+                {
 
+                    MessageBox.Show("user单独胜利");
+                    //火属性
+                    computer1_blood = computer1_blood - user_count;
+                    computer2_blood = computer2_blood - user_count;
+                    label28.Text = label27.Text = "烈火灼伤";
+                    int c2 = ma.fire(user_count);
+                    computer1_blood = computer1_blood - c2;
+                    computer2_blood = computer2_blood - c2;
+                    label18.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+                    label17.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+
+                }
+                else
+                {
+                    MessageBox.Show("user单独胜利");
+                    label27.Text = label28.Text = label29.Text = "普通攻击";
+                    //gm.LessBlood(2, user_count);
+                    //gm.LessBlood(3, user_count);
+                    computer2_blood = computer2_blood - user_count;
+                    computer1_blood = computer1_blood - user_count;
+                    label17.Text = "-" + user_count.ToString();
+                    label18.Text = "-" + user_count.ToString();
+                    label16.Text = "-0";
+                }
             }
             #endregion 
         }
@@ -488,7 +587,10 @@ namespace caiquan
 
         private void button11_Click(object sender, EventArgs e)
         {
-            user_blood = 1;
+            //user_blood = 1;
+            MessageBox.Show(computer2_material.ToString());
+            MessageBox.Show(computer1_material.ToString());
+            MessageBox.Show(user_material.ToString());
         }
 
         public void getwhowin()
@@ -518,33 +620,40 @@ namespace caiquan
             {
                 Random rd = new Random();
                 int summer = rd.Next(1, 3);
-                if (results.Length == 1)
+                if (results.Length == 1 && !is_switch)
                 {
                     if (results[0] == 404)
                     {
                         //谁都没赢
                         whowin = false;
+                        is_switch = true;
+                        
                     }
 
                     //l9
 
                     //错误处理记录:数组越界:数组索引从0开始
-                    if (results[0] == 1)
+                    else
                     {
-                        //玩家胜利
-                        label19.Text = "恭喜玩家胜利!";
-                        if(summer == 1)
+                        if (results[0] == 1 && !is_switch)
                         {
-                            user_truth_count_sum = true;
-                        }
-                        if (summer == 2)
-                        {
-                            user_truth_blood++;
-                        }
+                            //玩家胜利
+                            label19.Text = "恭喜玩家胜利!";
+                            if (summer == 1)
+                            {
+                                user_truth_count_sum = true;
+                            }
+                            if (summer == 2)
+                            {
+                                user_truth_blood_sum = true;
+                            }
 
+                            is_switch = false;
+
+                        }
                     }
 
-                    if (results[0] == 2)
+                    if (results[0] == 2 && !is_switch)
                     {
                         //Victor胜利
                         label19.Text = "恭喜Victor胜利!";
@@ -556,23 +665,26 @@ namespace caiquan
                         {
                             computer1_truth_blood_sum = true;
                         }
+                        is_switch = false;
                     }
-                    if (results[0] == 3)
+                    if (results[0] == 3 && !is_switch)
                     {
                         //Utanus胜利
                         label19.Text = "恭喜Utanus胜利!";
-                    }
-                    if (summer == 1)
-                    {
-                        computer2_truth_blood_sum = true;
-                    }
-                    if (summer == 2)
-                    {
-                        computer2_truth_count_sum = true;
+
+                        if (summer == 1)
+                        {
+                            computer2_truth_blood_sum = true;
+                        }
+                        if (summer == 2)
+                        {
+                            computer2_truth_count_sum = true;
+                        }
+                        is_switch = true;
                     }
                 }
 
-                if (results.Length == 2)
+                if (results.Length == 2 && !is_switch)
                 {
                     //1,2 2,3 1,3 顺序不确定
                     int sum = 0;
@@ -625,10 +737,13 @@ namespace caiquan
                             computer2_truth_blood_sum = true;
                         }
                     }
+                    is_switch = true;
                 }
             }
             //关闭执行命令 等待下一次执行
             do_windo = false;
+            //开启未判断
+            is_switch = false;
         }
         #endregion
 
@@ -642,6 +757,8 @@ namespace caiquan
             #region 继续重开
             //一局结束 恢复参数
             alllife = true;
+            is_switch = false;
+            label27.Text = label28.Text = label29.Text = "普通攻击";
             user_blood = user_truth_blood;
             computer1_blood = computer1_truth_blood;
             computer2_blood = computer2_truth_blood;
@@ -686,10 +803,50 @@ namespace caiquan
             islifeing.Add(2);
             islifeing.Add(3);
             #endregion
+            #region 判断属性
+            int sx = rd.Next(1, 4);
+            if (sx == 1)
+            {
+                user_material = 1;
+                computer1_material = 0;
+                computer2_material = 0;
+                label30.BackColor = System.Drawing.Color.Red;
+                label30.Text = "火";
+                label32.BackColor = System.Drawing.Color.White;
+                label34.BackColor = System.Drawing.Color.White;
+                label32.Text = "普通";
+                label34.Text = "普通";
+            }
+            if (sx == 2)
+            {
+                computer1_material = 1;
+                computer2_material = 0;
+                user_material = 0;
+                label32.BackColor = System.Drawing.Color.Red;
+                label32.Text = "火";
+                label30.BackColor = System.Drawing.Color.White;
+                label34.BackColor = System.Drawing.Color.White;
+                label30.Text = "普通";
+                label34.Text = "普通";
+            }
+            if (sx == 3)
+            {
+                user_material = 0;
+                computer1_material = 0;
+                computer2_material = 1;
+                label34.BackColor = System.Drawing.Color.Red;
+                label34.Text = "火";
+                label32.BackColor = System.Drawing.Color.White;
+                label30.BackColor = System.Drawing.Color.White;
+                label30.Text = "普通";
+                label32.Text = "普通";
+            }
+            #endregion
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
+
             restart();
         }
 
@@ -697,8 +854,6 @@ namespace caiquan
         {
             #region 增加属性函数
 
-         
-                //这是一个死循环
                 if (user_truth_blood_sum)
                 {
                     user_truth_blood++;
@@ -716,7 +871,7 @@ namespace caiquan
                 }
                 if (computer1_truth_count_sum)
                 {
-                    computer1_count++;
+                    computer1_truth_count++;
                     computer1_truth_count_sum = false;
                 }
                 if (computer2_truth_blood_sum)
@@ -729,6 +884,7 @@ namespace caiquan
                     computer2_truth_count++;
                     computer2_truth_count_sum = false;
                 }
+            
                 #endregion
         
 
@@ -736,7 +892,6 @@ namespace caiquan
 
         private void timer4_Tick(object sender, EventArgs e)
         {
-            //修复惊天bug
             zengyi();
         }
     }
