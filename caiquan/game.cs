@@ -21,6 +21,9 @@ namespace caiquan
         int user_truth_blood = 5;
         int computer1_truth_blood = 5;
         int computer2_truth_blood = 5; //真实血量
+        public int user_money = 0; //用户金钱
+        public int computer1_money = 0; //Victor金钱
+        public int computer2_money = 0; //Utanus金钱 
         int boss; //地主索引
         int user_material;
         int computer1_material;
@@ -260,7 +263,7 @@ namespace caiquan
             }
             if (winner == 1)
             {
-                
+                computer2_money = computer2_money + computer2_truth_count;                
 
                 if (computer1_material == 1)
                 {
@@ -289,6 +292,7 @@ namespace caiquan
             }
             if (winner == 2)
             {
+                computer1_money = computer1_money + computer1_truth_count;
                 if (computer2_material == 1)
                 {
 
@@ -317,6 +321,8 @@ namespace caiquan
             }
             if (winner == 3)
             {
+                computer2_money = computer2_money + computer2_truth_count;
+                user_money = user_money + user_truth_count;
                 MessageBox.Show("Utanus与user同时胜利");
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 computer1_blood = computer1_blood - computer2_count - user_count;
@@ -327,6 +333,8 @@ namespace caiquan
             }
             if (winner == 4)
             {
+                computer1_money = computer1_money + computer1_truth_count;
+                user_money = user_money + user_truth_count;
                 MessageBox.Show("Victor与user同时胜利");
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(3, computer1_count + user_count);
@@ -339,6 +347,8 @@ namespace caiquan
             }
             if (winner == 5)
             {
+                computer1_money = computer1_money + computer1_truth_count;
+                computer2_money = computer2_money + computer2_truth_count;
                 MessageBox.Show("Victor与Utanus同时胜利");
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(1, computer1_count + computer2_count);
@@ -351,6 +361,7 @@ namespace caiquan
             }
             if (winner == 6)
             {
+                user_money = user_money + user_truth_count;
                 if (user_material == 1)
                 {
 
@@ -408,7 +419,12 @@ namespace caiquan
             label12.Text = user_count.ToString();
             label14.Text = computer1_count.ToString();
             label11.Text = computer2_count.ToString();
-            
+
+            #endregion
+            #region 更新金钱
+            label42.Text = user_money.ToString();
+            label41.Text = computer2_money.ToString();
+            label40.Text = computer2_money.ToString();
             #endregion
             #region 判断是否挂掉
             if (user_blood <= 0)
@@ -568,6 +584,7 @@ namespace caiquan
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            #region 自动战斗
             if (user_blood <= 0)
             {
 
@@ -583,6 +600,9 @@ namespace caiquan
                 alllife = false;
                 //停止电脑互怼行为
             }
+
+            #endregion
+
         }
 
         private void button11_Click(object sender, EventArgs e)

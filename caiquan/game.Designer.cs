@@ -86,6 +86,13 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -670,11 +677,98 @@
             this.timer4.Interval = 2000;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("方正静蕾简体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label36.ForeColor = System.Drawing.Color.BlueViolet;
+            this.label36.Location = new System.Drawing.Point(457, 1);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(214, 51);
+            this.label36.TabIndex = 47;
+            this.label36.Text = "金钱统计";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label37.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label37.Location = new System.Drawing.Point(477, 57);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(98, 30);
+            this.label37.TabIndex = 48;
+            this.label37.Text = "Victor：";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label38.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label38.Location = new System.Drawing.Point(477, 89);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(101, 30);
+            this.label38.TabIndex = 49;
+            this.label38.Text = "Utanus：";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label39.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label39.Location = new System.Drawing.Point(474, 119);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(69, 30);
+            this.label39.TabIndex = 50;
+            this.label39.Text = "我：";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label40.Font = new System.Drawing.Font("方正静蕾简体", 20F);
+            this.label40.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label40.Location = new System.Drawing.Point(574, 51);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(99, 43);
+            this.label40.TabIndex = 51;
+            this.label40.Text = "错误";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label41.Font = new System.Drawing.Font("方正静蕾简体", 20F);
+            this.label41.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label41.Location = new System.Drawing.Point(572, 87);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(99, 43);
+            this.label41.TabIndex = 52;
+            this.label41.Text = "错误";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label42.Font = new System.Drawing.Font("方正静蕾简体", 20F);
+            this.label42.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label42.Location = new System.Drawing.Point(574, 121);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(99, 43);
+            this.label42.TabIndex = 53;
+            this.label42.Text = "错误";
+            // 
             // game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 766);
+            this.Controls.Add(this.label42);
+            this.Controls.Add(this.label41);
+            this.Controls.Add(this.label40);
+            this.Controls.Add(this.label39);
+            this.Controls.Add(this.label38);
+            this.Controls.Add(this.label37);
+            this.Controls.Add(this.label36);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.label32);
@@ -792,5 +886,12 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
     }
 }
