@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace caiquan
@@ -21,6 +20,7 @@ namespace caiquan
         int user_truth_blood = 5;
         int computer1_truth_blood = 5;
         int computer2_truth_blood = 5; //真实血量
+        int money_id = 0; //加钱的id
         public int user_money = 0; //用户金钱
         public int computer1_money = 0; //Victor金钱
         public int computer2_money = 0; //Utanus金钱 
@@ -28,11 +28,11 @@ namespace caiquan
         int user_material;
         int computer1_material;
         int computer2_material; //属性
+        bool add_money = false; //已经加钱
         bool user_is_die = false; //用户是否挂掉
         bool end = false; //是否终止线程
         bool whowin = false; //是否判断输赢情况
         bool do_windo = false; //是否判断输赢
-        bool is_switch = false; //已经判断过一次
         bool alllife = true; //电脑全部存活
         bool user_truth_blood_sum = false; //用户加血
         bool user_truth_count_sum = false; //用户加攻击
@@ -48,17 +48,13 @@ namespace caiquan
         public game()
         {
             InitializeComponent();
-        }
+        } //构造函数
 
 
         private void game_Load(object sender, EventArgs e) {
             string local = Application.StartupPath;
 
-            //SoundPlayer sp = new SoundPlayer();
-            //sp.SoundLocation = local + @"\\accets\\song.wav";
-            //sp.PlayLooping();
 
-            //Thread th = new Thread(timer1_Tick);
             RanName rn = new RanName();
 
             #region 判断地主
@@ -125,11 +121,11 @@ namespace caiquan
             try
             {
                 int rm = rd.Next(1, 11);
-                string path1 = rn.gets(local,rm);
+                string path1 = rn.gets(local, rm);
                 rm = rd.Next(1, 11);
-                string path2 = rn.gets(local,rm);
+                string path2 = rn.gets(local, rm);
                 rm = rd.Next(1, 11);
-                string path3 = rn.gets(local,rm);
+                string path3 = rn.gets(local, rm);
 
 
                 //赋予pictureBox图片路径
@@ -186,12 +182,14 @@ namespace caiquan
 
         #endregion
 
+ 
 
 
         private void button10_Click(object sender, EventArgs e)
         {
-            //优先终止线程
-
+            #region 预操作
+            //先打开判断加钱通道
+            add_money = false;
 
             game gm = new game();
             //电脑随机选择
@@ -200,6 +198,7 @@ namespace caiquan
 
             int p1 = cm.Next(1, 4); //第一个电脑用户选择
             int p2 = cm.Next(1, 4); //第二个电脑用户选择
+            #endregion
             #region 按钮上色
 
             //电脑用户1:Utanus
@@ -263,7 +262,6 @@ namespace caiquan
             }
             if (winner == 1)
             {
-                computer2_money = computer2_money + computer2_truth_count;                
 
                 if (computer1_material == 1)
                 {
@@ -292,8 +290,8 @@ namespace caiquan
             }
             if (winner == 2)
             {
-                computer1_money = computer1_money + computer1_truth_count;
-                if (computer2_material == 1)
+
+                    if (computer2_material == 1)
                 {
 
                         MessageBox.Show("Victor单独胜利");
@@ -321,8 +319,7 @@ namespace caiquan
             }
             if (winner == 3)
             {
-                computer2_money = computer2_money + computer2_truth_count;
-                user_money = user_money + user_truth_count;
+
                 MessageBox.Show("Utanus与user同时胜利");
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 computer1_blood = computer1_blood - computer2_count - user_count;
@@ -333,8 +330,7 @@ namespace caiquan
             }
             if (winner == 4)
             {
-                computer1_money = computer1_money + computer1_truth_count;
-                user_money = user_money + user_truth_count;
+
                 MessageBox.Show("Victor与user同时胜利");
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(3, computer1_count + user_count);
@@ -347,8 +343,7 @@ namespace caiquan
             }
             if (winner == 5)
             {
-                computer1_money = computer1_money + computer1_truth_count;
-                computer2_money = computer2_money + computer2_truth_count;
+
                 MessageBox.Show("Victor与Utanus同时胜利");
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(1, computer1_count + computer2_count);
@@ -361,10 +356,10 @@ namespace caiquan
             }
             if (winner == 6)
             {
-                user_money = user_money + user_truth_count;
+
                 if (user_material == 1)
                 {
-
+                    
                     MessageBox.Show("user单独胜利");
                     //火属性
                     computer1_blood = computer1_blood - user_count;
@@ -548,23 +543,19 @@ namespace caiquan
         // }
         #endregion
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         public void auto()
         {
             if (alllife)
             {
+                #region 电脑互打
                 //用户挂掉后，电脑1和电脑3互相攻击的函数
                 Core cr = new Core();
                 Random cm = new Random();
                 int p1 = cm.Next(); //第一个电脑用户选择
                 int p2 = cm.Next(); //第二个电脑用户选择
                 int win = cr.cwinner(p1, p2);
-
-
+                #endregion
                 #region 解析算法 减血回显
                 if (win == 1)
                 {
@@ -578,8 +569,6 @@ namespace caiquan
                 }
             }
                 #endregion
-
-
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -605,18 +594,14 @@ namespace caiquan
 
         }
 
-        private void button11_Click(object sender, EventArgs e)
-        {
-            //user_blood = 1;
-            MessageBox.Show(computer2_material.ToString());
-            MessageBox.Show(computer1_material.ToString());
-            MessageBox.Show(user_material.ToString());
-        }
+
 
         public void getwhowin()
         {
+            #region 获取输赢情况
             if (whowin)
             {
+                
                 SwitchWinner sw = new SwitchWinner();
                 //转换并传入参数
                 islifeing.Sort();
@@ -630,35 +615,36 @@ namespace caiquan
                 //打开判断输赢的函数执行通道
                 do_windo = true;
             }
+            #endregion
         }
 
         #region 胜利解析算法(新)
-        //喜报:算法于2020.2.9 11:23 测试成功
+        //喜报:算法于2021.2.9 11:23 测试成功
+        //喜报:算法于2021.2.11 12:50 二次调试成功
         public void windo()
         {
             if (do_windo)
             {
                 Random rd = new Random();
                 int summer = rd.Next(1, 3);
-                if (results.Length == 1 && !is_switch)
+                if (results.Length == 1)
                 {
                     if (results[0] == 404)
                     {
                         //谁都没赢
                         whowin = false;
-                        is_switch = true;
                         
                     }
-
-                    //l9
 
                     //错误处理记录:数组越界:数组索引从0开始
                     else
                     {
-                        if (results[0] == 1 && !is_switch)
+                        if (results[0] == 1)
                         {
                             //玩家胜利
                             label19.Text = "恭喜玩家胜利!";
+                            money_id = 1;
+                            
                             if (summer == 1)
                             {
                                 user_truth_count_sum = true;
@@ -668,30 +654,33 @@ namespace caiquan
                                 user_truth_blood_sum = true;
                             }
 
-                            is_switch = false;
+                            
 
                         }
                     }
 
-                    if (results[0] == 2 && !is_switch)
+                    if (results[0] == 2)
                     {
                         //Victor胜利
                         label19.Text = "恭喜Victor胜利!";
+                        money_id = 2;
+
                         if (summer == 1)
                         {
                             computer1_truth_count_sum = true;
                         }
-                        if (summer == 5)
+                        if (summer == 2)
                         {
                             computer1_truth_blood_sum = true;
                         }
-                        is_switch = false;
+                        
                     }
-                    if (results[0] == 3 && !is_switch)
+                    if (results[0] == 3)
                     {
                         //Utanus胜利
                         label19.Text = "恭喜Utanus胜利!";
-
+                        money_id = 3;
+                        
                         if (summer == 1)
                         {
                             computer2_truth_blood_sum = true;
@@ -700,11 +689,11 @@ namespace caiquan
                         {
                             computer2_truth_count_sum = true;
                         }
-                        is_switch = true;
+                        
                     }
                 }
 
-                if (results.Length == 2 && !is_switch)
+                if (results.Length == 2 )
                 {
                     //1,2 2,3 1,3 顺序不确定
                     int sum = 0;
@@ -717,6 +706,8 @@ namespace caiquan
                     if (sum == 3)
                     {
                         label19.Text = "恭喜user和Victor同时胜利!";
+                        money_id = 4;
+
                         if (summer == 1)
                         {
                             user_truth_count_sum = true;
@@ -732,7 +723,9 @@ namespace caiquan
                     if (sum == 4)
                     {
                         label19.Text = "恭喜user和Utanus同时胜利!";
-                        if(summer == 1)
+                        money_id = 5;
+
+                        if (summer == 1)
                         {
                             user_truth_count_sum = true;
                             computer2_truth_count_sum = true; 
@@ -745,7 +738,10 @@ namespace caiquan
                     }
                     if (sum == 5)
                     {
+
                         label19.Text = "恭喜Victor和Utanus同时胜利!";
+                        money_id = 6;
+
                         if (summer == 1)
                         {
                             computer1_truth_count_sum = true;
@@ -757,13 +753,11 @@ namespace caiquan
                             computer2_truth_blood_sum = true;
                         }
                     }
-                    is_switch = true;
+                    
                 }
             }
             //关闭执行命令 等待下一次执行
             do_windo = false;
-            //开启未判断
-            is_switch = false;
         }
         #endregion
 
@@ -777,7 +771,6 @@ namespace caiquan
             #region 继续重开
             //一局结束 恢复参数
             alllife = true;
-            is_switch = false;
             label27.Text = label28.Text = label29.Text = "普通攻击";
             user_blood = user_truth_blood;
             computer1_blood = computer1_truth_blood;
@@ -862,13 +855,16 @@ namespace caiquan
                 label32.Text = "普通";
             }
             #endregion
+
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-
+            zengyi(); //强化属性
             restart();
+            add_moneyes(money_id);
         }
+
 
         public void zengyi()
         {
@@ -905,14 +901,53 @@ namespace caiquan
                     computer2_truth_count_sum = false;
                 }
             
-                #endregion
-        
+                #endregion       
 
         }
 
-        private void timer4_Tick(object sender, EventArgs e)
-        {
-            zengyi();
+        public void add_moneyes(int id) {
+            #region 加钱函数
+            //以不动应万动
+            if (id == 1)
+            {
+                //user单独胜利
+                user_money = user_money + computer1_truth_blood + computer2_truth_blood;
+                id = 0; //重置 避免多次访问
+            }
+            if (id == 2)
+            {
+                //Victor单独胜利
+                computer1_money = computer1_money + computer2_truth_blood + user_truth_blood;
+                id = 0; //重置 避免多次访问
+            }
+            if (id == 3)
+            {
+                //Utanus单独胜利
+                computer2_money = computer2_money + user_truth_blood + computer1_truth_blood;
+                id = 0; //重置 避免多次访问
+            }
+            if (id == 4)
+            {
+                //user和Victor同时胜利
+                user_money = user_money + computer2_truth_blood;
+                computer1_money = computer1_money + computer2_truth_blood;
+                id = 0; //重置 避免多次访问
+            }
+            if (id == 5)
+            {
+                //user与Utanus同时胜利
+                user_money = user_money + computer1_truth_blood;
+                computer2_money = computer2_money + computer1_truth_blood;
+                id = 0; //重置 避免多次访问
+            }
+            if (id == 6)
+            {
+                //Victor和Utanus同时胜利
+                computer1_money = computer1_money + user_truth_blood;
+                computer2_money = computer2_money + user_truth_blood;
+                id = 0; //重置 避免多次访问
+            }
+            #endregion
         }
     }
 }
