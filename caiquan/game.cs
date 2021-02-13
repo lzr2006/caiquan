@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.IO;
+using caiqian;
+using System.Text;
 
 namespace caiquan
 {
@@ -42,6 +45,7 @@ namespace caiquan
         bool computer2_truth_count_sum = false; //Utanus加攻击
         int[] islife; //生存玩家
         int[] results; //转换后的输赢情况
+        List<string> result = new List<string>();
         List<int> islifeing = new List<int>(); //生存玩家
         #endregion
 
@@ -419,7 +423,7 @@ namespace caiquan
             #region 更新金钱
             label42.Text = user_money.ToString();
             label41.Text = computer2_money.ToString();
-            label40.Text = computer2_money.ToString();
+            label40.Text = computer1_money.ToString();
             #endregion
             #region 判断是否挂掉
             if (user_blood <= 0)
@@ -948,6 +952,38 @@ namespace caiquan
                 id = 0; //重置 避免多次访问
             }
             #endregion
+            
         }
-    }
+
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            string local = Application.StartupPath;
+            Save sv = new Save();
+            sv.saved(user_truth_blood, computer1_truth_blood, computer2_truth_blood, user_money, computer1_money, computer2_money, user_truth_count, computer1_truth_count, computer2_truth_count, local);
+            //string wiilsaved = local + "\\Save.exe"; //存储程序路径
+        
+            //System.Diagnostics.Process.Start(wiilsaved);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //读档
+            string path2 = Application.StartupPath + "\\temp\\temp.txt";
+            StreamReader sr = new StreamReader(path2, Encoding.GetEncoding("utf-8"));
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                
+                result.Add(line.ToString());
+            }
+            string a = " " ;
+            foreach (var item in result)
+            {
+                a += item;
+            }
+            sr.Close();
+            MessageBox.Show(a);
+        }
+    }//path2, false, )
 }
