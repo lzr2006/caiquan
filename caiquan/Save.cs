@@ -29,7 +29,7 @@ namespace caiqian
             
             sw.Flush();
             sw.Close();
-            System.Windows.Forms.MessageBox.Show("存储开始");
+            
 
             //输出路径并存储
             string path2 = "D:\\config_cq.txt";
@@ -37,8 +37,8 @@ namespace caiqian
             localer.Write(local);
             localer.Flush();
             localer.Close();
-
-            //在Python中删除源文件
+            System.Windows.Forms.MessageBox.Show("存档成功!");
+            //在读取中删除源文件
         }
 
       

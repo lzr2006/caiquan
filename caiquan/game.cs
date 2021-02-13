@@ -47,6 +47,7 @@ namespace caiquan
         int[] results; //转换后的输赢情况
         List<string> result = new List<string>();
         List<int> islifeing = new List<int>(); //生存玩家
+        List<int> value = new List<int>(); //读取数据
         #endregion
 
         public game()
@@ -970,20 +971,48 @@ namespace caiquan
         {
             //读档
             string path2 = Application.StartupPath + "\\temp\\temp.txt";
-            StreamReader sr = new StreamReader(path2, Encoding.GetEncoding("utf-8"));
-            String line;
-            while ((line = sr.ReadLine()) != null)
+            try
             {
-                
-                result.Add(line.ToString());
+                StreamReader sr = new StreamReader(path2, Encoding.GetEncoding("utf-8"));
+
+
+                String line;
+                while ((line = sr.ReadLine()) != null)
+                {
+
+                    result.Add(line.ToString());
+                }
+
+                foreach (var item in result)
+                {
+                    value.Add(Convert.ToInt32(item));
+                }
+                sr.Close();
+                //删除源文件
+                File.Delete(path2);
+                //开始读取并赋值
+                user_blood = value[0];
+                computer1_blood = value[1];
+                computer2_blood = value[2];
+                user_truth_blood = value[0];
+                computer1_truth_blood = value[1];
+                computer2_truth_blood = value[2];
+                user_money = value[3];
+                computer1_money = value[4];
+                computer2_money = value[5];
+                user_truth_count = value[6];
+                computer1_truth_count = value[7];
+                computer2_truth_count = value[8];
+                user_count = value[6];
+                computer1_count = value[7];
+                computer2_count = value[8];
+                MessageBox.Show("读取存档成功!");
+
             }
-            string a = " " ;
-            foreach (var item in result)
+            catch
             {
-                a += item;
+                MessageBox.Show("没有存档!");
             }
-            sr.Close();
-            MessageBox.Show(a);
         }
-    }//path2, false, )
+    }
 }
