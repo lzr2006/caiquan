@@ -1,12 +1,13 @@
-﻿using System;
+﻿using caiqian;
+using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.IO;
-using caiqian;
 using System.Text;
+using System.Windows.Forms;
 
 namespace caiquan
 {
+    //因为版本更迭的原因，实则有两个命名空间。Form的namspace是jiandaoshitoubu -> 包括program.cs == namespace jiandaoshotoubu
     public partial class game : Form
     {
         #region 声明字段
@@ -53,7 +54,7 @@ namespace caiquan
         public game()
         {
             InitializeComponent();
-        } //构造函数
+        } //构造函数 我也不知道干啥的
 
 
         private void game_Load(object sender, EventArgs e) {
@@ -560,6 +561,7 @@ namespace caiquan
                 int p1 = cm.Next(); //第一个电脑用户选择
                 int p2 = cm.Next(); //第二个电脑用户选择
                 int win = cr.cwinner(p1, p2);
+
                 #endregion
                 #region 解析算法 减血回显
                 if (win == 1)
@@ -579,12 +581,14 @@ namespace caiquan
         private void timer2_Tick(object sender, EventArgs e)
         {
             #region 自动战斗
+            //修复一直为火属性的问题
             if (user_blood <= 0)
             {
 
                 if (computer1_blood != 0 && computer2_blood != 0)
                 {
                     auto();
+                    label27.Text = label28.Text = label29.Text = "普通攻击";
 
                 }
             }
@@ -959,16 +963,22 @@ namespace caiquan
 
         private void button11_Click(object sender, EventArgs e)
         {
+            #region 存档
+            //修复无法覆盖存档的问题
+            string path2 = Application.StartupPath + "\\temp\\temp.txt";
+            File.Delete(path2);
             string local = Application.StartupPath;
             Save sv = new Save();
             sv.saved(user_truth_blood, computer1_truth_blood, computer2_truth_blood, user_money, computer1_money, computer2_money, user_truth_count, computer1_truth_count, computer2_truth_count, local);
             //string wiilsaved = local + "\\Save.exe"; //存储程序路径
-        
+
             //System.Diagnostics.Process.Start(wiilsaved);
+            #endregion
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            #region 读档
             //读档
             string path2 = Application.StartupPath + "\\temp\\temp.txt";
             try
@@ -989,7 +999,7 @@ namespace caiquan
                 }
                 sr.Close();
                 //删除源文件
-                File.Delete(path2);
+                
                 //开始读取并赋值
                 user_blood = value[0];
                 computer1_blood = value[1];
@@ -1013,6 +1023,7 @@ namespace caiquan
             {
                 MessageBox.Show("没有存档!");
             }
+            #endregion
         }
     }
 }
