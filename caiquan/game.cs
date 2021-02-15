@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Media;
 using System.Text;
 using System.Windows.Forms;
 
@@ -60,9 +61,12 @@ namespace caiquan
         private void game_Load(object sender, EventArgs e) {
             string local = Application.StartupPath;
 
-
+            #region 播放音乐
             RanName rn = new RanName();
-
+            SoundPlayer sp = new SoundPlayer(local + "\\accets\\media.wav");
+            //注意:此处自动使用新线程
+            sp.Play();
+            #endregion
             #region 判断地主
             Random rd = new Random();
             boss = rd.Next(1, 4);
