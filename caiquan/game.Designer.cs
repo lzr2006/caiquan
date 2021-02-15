@@ -222,6 +222,7 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Chartreuse;
+            this.button6.Cursor = System.Windows.Forms.Cursors.No;
             this.button6.Location = new System.Drawing.Point(18, 107);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(135, 35);
@@ -232,6 +233,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Chartreuse;
+            this.button5.Cursor = System.Windows.Forms.Cursors.No;
             this.button5.Location = new System.Drawing.Point(18, 68);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(135, 35);
@@ -242,6 +244,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Chartreuse;
+            this.button4.Cursor = System.Windows.Forms.Cursors.No;
             this.button4.Location = new System.Drawing.Point(18, 27);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(135, 35);
@@ -264,6 +267,7 @@
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Chartreuse;
+            this.button7.Cursor = System.Windows.Forms.Cursors.No;
             this.button7.Location = new System.Drawing.Point(18, 107);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(135, 35);
@@ -274,6 +278,7 @@
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Chartreuse;
+            this.button8.Cursor = System.Windows.Forms.Cursors.No;
             this.button8.Location = new System.Drawing.Point(18, 68);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(135, 35);
@@ -284,6 +289,7 @@
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.Chartreuse;
+            this.button9.Cursor = System.Windows.Forms.Cursors.No;
             this.button9.Location = new System.Drawing.Point(18, 27);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(135, 35);
@@ -660,7 +666,7 @@
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("方正静蕾简体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label36.ForeColor = System.Drawing.Color.BlueViolet;
-            this.label36.Location = new System.Drawing.Point(457, 1);
+            this.label36.Location = new System.Drawing.Point(441, 1);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(214, 51);
             this.label36.TabIndex = 47;
@@ -671,7 +677,7 @@
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label37.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label37.Location = new System.Drawing.Point(477, 57);
+            this.label37.Location = new System.Drawing.Point(461, 57);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(98, 30);
             this.label37.TabIndex = 48;
@@ -682,7 +688,7 @@
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label38.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label38.Location = new System.Drawing.Point(477, 89);
+            this.label38.Location = new System.Drawing.Point(461, 89);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(101, 30);
             this.label38.TabIndex = 49;
@@ -693,7 +699,7 @@
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label39.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label39.Location = new System.Drawing.Point(474, 119);
+            this.label39.Location = new System.Drawing.Point(458, 119);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(69, 30);
             this.label39.TabIndex = 50;
@@ -705,7 +711,7 @@
             this.label40.Cursor = System.Windows.Forms.Cursors.Default;
             this.label40.Font = new System.Drawing.Font("方正静蕾简体", 20F);
             this.label40.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label40.Location = new System.Drawing.Point(574, 51);
+            this.label40.Location = new System.Drawing.Point(558, 51);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(99, 43);
             this.label40.TabIndex = 51;
@@ -717,7 +723,7 @@
             this.label41.Cursor = System.Windows.Forms.Cursors.Default;
             this.label41.Font = new System.Drawing.Font("方正静蕾简体", 20F);
             this.label41.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label41.Location = new System.Drawing.Point(572, 87);
+            this.label41.Location = new System.Drawing.Point(556, 87);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(99, 43);
             this.label41.TabIndex = 52;
@@ -729,7 +735,7 @@
             this.label42.Cursor = System.Windows.Forms.Cursors.Default;
             this.label42.Font = new System.Drawing.Font("方正静蕾简体", 20F);
             this.label42.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label42.Location = new System.Drawing.Point(574, 121);
+            this.label42.Location = new System.Drawing.Point(558, 121);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(99, 43);
             this.label42.TabIndex = 53;
