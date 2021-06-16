@@ -49,9 +49,8 @@ namespace jiandaoshitoubu
             if (user_win >= 2)
             {
                 button8.BackColor = System.Drawing.Color.AliceBlue;
-                button8.Cursor = System.Windows.Forms.Cursors.Default;
             }
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -174,18 +173,22 @@ namespace jiandaoshitoubu
             ab.Show();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
 
         }
 
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-        //private void button6_Click(object sender, EventArgs e)
-        //{
+        }
 
-        //    game gm = new game();
-        //    gm.Show();
-        //}
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            game gm = new game();
+            gm.Show();
+        }
     }
 }

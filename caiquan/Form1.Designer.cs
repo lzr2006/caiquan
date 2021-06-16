@@ -43,6 +43,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -104,7 +105,6 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Blue;
-            this.button4.Cursor = System.Windows.Forms.Cursors.No;
             this.button4.Location = new System.Drawing.Point(64, 90);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
@@ -116,7 +116,6 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Blue;
-            this.button5.Cursor = System.Windows.Forms.Cursors.No;
             this.button5.Location = new System.Drawing.Point(221, 90);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
@@ -138,7 +137,6 @@
             // 
             // button8
             // 
-            this.button8.Cursor = System.Windows.Forms.Cursors.No;
             this.button8.Location = new System.Drawing.Point(391, 337);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
@@ -177,7 +175,6 @@
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.Blue;
-            this.button9.Cursor = System.Windows.Forms.Cursors.No;
             this.button9.Location = new System.Drawing.Point(388, 90);
             this.button9.Margin = new System.Windows.Forms.Padding(2);
             this.button9.Name = "button9";
@@ -185,6 +182,7 @@
             this.button9.TabIndex = 6;
             this.button9.Text = "布";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -196,11 +194,22 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(0, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(655, 388);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.label4);
@@ -239,6 +248,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button6;
     }
 }
 

@@ -13,7 +13,6 @@ namespace caiquan
 
         #region 全是bug没救了，只能叠bug负负得正
         {
-            //我知道这里全是bug，但是不能改，因为程序就是靠着bug运行的。你别问我为什么，因为我也不知道为什么。
             //传入值1代表剪刀，2代表石头，3代表布
             //返回值规范:0->平局 1->Victor单独胜利 2->Utanus单独胜利 3->Victor与user同时胜利 4->Utanus与user同时胜利 5->Victor与Utanus同时胜利 6->user单独胜利
 

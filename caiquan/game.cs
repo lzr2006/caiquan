@@ -1,14 +1,13 @@
-﻿using caiqian;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Media;
-using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using caiqian;
+using System.Text;
+using System.Media;
 
 namespace caiquan
 {
-    //因为版本更迭的原因，实则有两个命名空间。Form的namspace是jiandaoshitoubu -> 包括program.cs == namespace jiandaoshotoubu
     public partial class game : Form
     {
         #region 声明字段
@@ -29,6 +28,8 @@ namespace caiquan
         public int user_money = 0; //用户金钱
         public int computer1_money = 0; //Victor金钱
         public int computer2_money = 0; //Utanus金钱 
+        public int tool_expensive = 0; //道具增量金币 
+        public int hpq = 0; //核平器价格
         int boss; //地主索引
         int user_material;
         int computer1_material;
@@ -48,25 +49,22 @@ namespace caiquan
         int[] islife; //生存玩家
         int[] results; //转换后的输赢情况
         List<string> result = new List<string>();
+        List<string> backer = new List<string>(); //存档
         List<int> islifeing = new List<int>(); //生存玩家
-        List<int> value = new List<int>(); //读取数据
         #endregion
 
         public game()
         {
             InitializeComponent();
-        } //构造函数 我也不知道干啥的
+        }     //构造函数
 
 
         private void game_Load(object sender, EventArgs e) {
             string local = Application.StartupPath;
 
-            #region 播放音乐
+
             RanName rn = new RanName();
-            SoundPlayer sp = new SoundPlayer(local + "\\accets\\media.wav");
-            //注意:此处自动使用新线程
-            sp.Play();
-            #endregion
+
             #region 判断地主
             Random rd = new Random();
             boss = rd.Next(1, 4);
@@ -75,6 +73,8 @@ namespace caiquan
             if (boss == 1)
             {
                 //玩家为地主
+                user_blood = user_blood + (computer1_truth_blood / 2);
+                user_count = user_count + (user_truth_count / 2);
                 label25.Text = "地主";
                 label23.Text = "农民";
                 label21.Text = "农民";
@@ -82,6 +82,8 @@ namespace caiquan
             if (boss == 2)
             {
                 //Victor为地主
+                computer1_blood = computer1_blood + (computer2_truth_blood / 2);
+                computer1_count = computer1_count + (computer1_truth_count / 2);
                 label21.Text = "地主";
                 label23.Text = "农民";
                 label25.Text = "农民";
@@ -89,6 +91,8 @@ namespace caiquan
             if (boss == 3)
             {
                 //Utanus为地主
+                computer2_blood = computer2_blood + (user_blood / 2);
+                computer2_count = computer2_count + (computer2_truth_count / 2);
                 label23.Text = "地主";
                 label25.Text = "农民";
                 label21.Text = "农民";
@@ -264,7 +268,7 @@ namespace caiquan
             Material ma = new Material();
             if (winner == 0)
             {
-                MessageBox.Show("平局");
+                MessageBox.Show("平局","对战信息",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 label16.Text = "-0";
                 label17.Text = "-0";
@@ -276,7 +280,7 @@ namespace caiquan
                 if (computer1_material == 1)
                 {
                     //火属性
-                    MessageBox.Show("Utanus单独胜利");
+                    MessageBox.Show("Utanus单独胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     user_blood = user_blood - computer2_count;
                     computer1_blood = computer1_blood - computer2_count;
                     label27.Text = label29.Text = "烈火灼伤";
@@ -285,17 +289,19 @@ namespace caiquan
                     computer1_blood = computer1_blood - c2;
                     label17.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
                     label16.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+                    computer2_money = computer2_money + (computer2_count / 2);
 
                 }
                 else
                 {
-                    MessageBox.Show("Utanus单独胜利");
+                    MessageBox.Show("Utanus单独胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     label27.Text = label28.Text = label29.Text = "普通攻击";
                     user_blood = user_blood - computer2_count;
                     computer1_blood = computer1_blood - computer2_count;
                     label17.Text = "-" + computer2_count.ToString();
                     label16.Text = "-" + computer2_count.ToString();
                     label18.Text = "-0";
+                    computer2_money = computer2_money + (computer2_count / 2);
                 }
             }
             if (winner == 2)
@@ -304,7 +310,7 @@ namespace caiquan
                     if (computer2_material == 1)
                 {
 
-                        MessageBox.Show("Victor单独胜利");
+                        MessageBox.Show("Victor单独胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //火属性
                         user_blood = user_blood - computer1_count;
                         computer2_blood = computer2_blood - computer1_count;
@@ -314,23 +320,26 @@ namespace caiquan
                         computer2_blood = computer2_blood - c2;
                         label18.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
                         label16.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+                        computer1_money = computer1_money + (computer1_count / 2);
 
-                    }
+                }
                 
 
                 else{
-                    MessageBox.Show("Victor单独胜利");
+                    MessageBox.Show("Victor单独胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     label27.Text = label28.Text = label29.Text = "普通攻击";
                     computer2_blood = computer2_blood - computer1_count;
                     user_blood = user_blood - computer1_count;
                     label16.Text = "-" + computer1_count.ToString();
                     label18.Text = "-" + computer1_count.ToString();
-                    label17.Text = "-0"; }
+                    label17.Text = "-0";
+                    computer1_money = computer1_money + (computer1_count / 2);
+                }
             }
             if (winner == 3)
             {
 
-                MessageBox.Show("Utanus与user同时胜利");
+                MessageBox.Show("Utanus与user同时胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 computer1_blood = computer1_blood - computer2_count - user_count;
                 int test = computer2_count + user_count;
@@ -341,7 +350,7 @@ namespace caiquan
             if (winner == 4)
             {
 
-                MessageBox.Show("Victor与user同时胜利");
+                MessageBox.Show("Victor与user同时胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(3, computer1_count + user_count);
                 computer2_blood = computer2_blood - computer1_count - user_count;
@@ -354,7 +363,7 @@ namespace caiquan
             if (winner == 5)
             {
 
-                MessageBox.Show("Victor与Utanus同时胜利");
+                MessageBox.Show("Victor与Utanus同时胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 label27.Text = label28.Text = label29.Text = "普通攻击";
                 //gm.LessBlood(1, computer1_count + computer2_count);
                 user_blood = user_blood - computer1_count - computer2_count;
@@ -370,7 +379,7 @@ namespace caiquan
                 if (user_material == 1)
                 {
                     
-                    MessageBox.Show("user单独胜利");
+                    MessageBox.Show("user单独胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //火属性
                     computer1_blood = computer1_blood - user_count;
                     computer2_blood = computer2_blood - user_count;
@@ -380,11 +389,12 @@ namespace caiquan
                     computer2_blood = computer2_blood - c2;
                     label18.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
                     label17.Text = "-" + c2.ToString() + "-" + computer2_count.ToString();
+                    user_money = user_money + (user_count / 2);
 
                 }
                 else
                 {
-                    MessageBox.Show("user单独胜利");
+                    MessageBox.Show("user单独胜利", "对战信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     label27.Text = label28.Text = label29.Text = "普通攻击";
                     //gm.LessBlood(2, user_count);
                     //gm.LessBlood(3, user_count);
@@ -393,6 +403,7 @@ namespace caiquan
                     label17.Text = "-" + user_count.ToString();
                     label18.Text = "-" + user_count.ToString();
                     label16.Text = "-0";
+                    user_money = user_money + (user_count / 2);
                 }
             }
             #endregion 
@@ -565,7 +576,6 @@ namespace caiquan
                 int p1 = cm.Next(); //第一个电脑用户选择
                 int p2 = cm.Next(); //第二个电脑用户选择
                 int win = cr.cwinner(p1, p2);
-
                 #endregion
                 #region 解析算法 减血回显
                 if (win == 1)
@@ -585,14 +595,12 @@ namespace caiquan
         private void timer2_Tick(object sender, EventArgs e)
         {
             #region 自动战斗
-            //修复一直为火属性的问题
             if (user_blood <= 0)
             {
 
                 if (computer1_blood != 0 && computer2_blood != 0)
                 {
                     auto();
-                    label27.Text = label28.Text = label29.Text = "普通攻击";
 
                 }
             }
@@ -606,8 +614,6 @@ namespace caiquan
             #endregion
 
         }
-
-
 
         public void getwhowin()
         {
@@ -804,6 +810,8 @@ namespace caiquan
             if (boss == 1)
             {
                 //玩家为地主
+                user_blood = user_blood + (computer1_truth_blood / 2);
+                user_count = user_count + (user_truth_count / 2);
                 label25.Text = "地主";
                 label23.Text = "农民";
                 label21.Text = "农民";
@@ -811,6 +819,8 @@ namespace caiquan
             if (boss == 2)
             {
                 //Victor为地主
+                computer1_blood = computer1_blood + (computer2_truth_blood / 2);
+                computer1_count = computer1_count + (computer1_truth_count / 2);
                 label21.Text = "地主";
                 label23.Text = "农民";
                 label25.Text = "农民";
@@ -818,6 +828,8 @@ namespace caiquan
             if (boss == 3)
             {
                 //Utanus为地主
+                computer2_blood = computer2_blood + (user_blood / 2);
+                computer2_count = computer2_count + (computer2_truth_count / 2);
                 label23.Text = "地主";
                 label25.Text = "农民";
                 label21.Text = "农民";
@@ -868,7 +880,18 @@ namespace caiquan
                 label32.Text = "普通";
             }
             #endregion
+            #region 道具金币增量
+            Random rs = new Random();
+            for (int i = 0; i < tool_expensive / 3; i++)
+            {
+                hpq = this.hpq + rs.Next(1, 3);
+                label45.Text = hpq.ToString() + "金币";
+            }
 
+            #endregion
+            #region 恢复道具
+            button13.Enabled = true;
+            #endregion
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -913,6 +936,8 @@ namespace caiquan
                     computer2_truth_count++;
                     computer2_truth_count_sum = false;
                 }
+
+            tool_expensive++;
             
                 #endregion       
 
@@ -968,9 +993,6 @@ namespace caiquan
         private void button11_Click(object sender, EventArgs e)
         {
             #region 存档
-            //修复无法覆盖存档的问题
-            string path2 = Application.StartupPath + "\\temp\\temp.txt";
-            File.Delete(path2);
             string local = Application.StartupPath;
             Save sv = new Save();
             sv.saved(user_truth_blood, computer1_truth_blood, computer2_truth_blood, user_money, computer1_money, computer2_money, user_truth_count, computer1_truth_count, computer2_truth_count, local);
@@ -983,51 +1005,72 @@ namespace caiquan
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             #region 读档
-            //读档
             string path2 = Application.StartupPath + "\\temp\\temp.txt";
-            try
+            StreamReader sr = new StreamReader(path2, Encoding.GetEncoding("utf-8"));
+            String line;
+            while ((line = sr.ReadLine()) != null)
             {
-                StreamReader sr = new StreamReader(path2, Encoding.GetEncoding("utf-8"));
-
-
-                String line;
-                while ((line = sr.ReadLine()) != null)
-                {
-
-                    result.Add(line.ToString());
-                }
-
-                foreach (var item in result)
-                {
-                    value.Add(Convert.ToInt32(item));
-                }
-                sr.Close();
-                //删除源文件
                 
-                //开始读取并赋值
-                user_blood = value[0];
-                computer1_blood = value[1];
-                computer2_blood = value[2];
-                user_truth_blood = value[0];
-                computer1_truth_blood = value[1];
-                computer2_truth_blood = value[2];
-                user_money = value[3];
-                computer1_money = value[4];
-                computer2_money = value[5];
-                user_truth_count = value[6];
-                computer1_truth_count = value[7];
-                computer2_truth_count = value[8];
-                user_count = value[6];
-                computer1_count = value[7];
-                computer2_count = value[8];
-                MessageBox.Show("读取存档成功!");
+                result.Add(line.ToString());
+            }
 
-            }
-            catch
+            foreach (var item in result)
             {
-                MessageBox.Show("没有存档!");
+                backer.Add(item);
             }
+            sr.Close();
+            user_truth_blood = Convert.ToInt32(backer[0]);
+            computer1_truth_blood = Convert.ToInt32(backer[1]);
+            computer2_truth_blood = Convert.ToInt32(backer[2]);
+            user_money = Convert.ToInt32(backer[3]);
+            computer1_money = Convert.ToInt32(backer[4]);
+            computer2_money = Convert.ToInt32(backer[5]);
+            user_count = Convert.ToInt32(backer[6]);
+            computer1_count = Convert.ToInt32(backer[7]);
+            computer2_count = Convert.ToInt32(backer[8]);
+            MessageBox.Show("读档成功!");
             #endregion
         }
-    }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
+            ReadTools rt = new ReadTools();
+            rt.Get_tools(Application.StartupPath + "\\tools\\index.txt");
+            
+        }
+
+        private void game_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (user_money >= hpq)
+            {
+                MessageBox.Show("购买成功！","Tool System",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                user_money = user_money - hpq;
+                label27.Text = label28.Text = label29.Text = "世界核平";
+                int damage = user_truth_count * 3; //核弹伤害为用户伤害的3倍
+                double E = damage / 2;
+                label16.Text = "-" + E.ToString();
+                label17.Text = label18.Text = "-" +  damage.ToString();
+                user_blood = user_blood - damage / 2;//加强一点儿可玩性 否则后期不敢用
+                computer1_blood = computer1_blood - damage;
+                computer2_blood = computer2_blood - damage;
+                SoundPlayer boom = new SoundPlayer(Application.StartupPath +  "\\accets\\HD.wav"); //播放声音
+                boom.Play();
+                button13.Enabled = false;
+            }
+           else
+            {
+                MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }//path2, false, )
 }
