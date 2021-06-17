@@ -85,33 +85,39 @@
             this.label42 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
+            this.tP1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label49 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
-            this.tP1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tP1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tP1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -645,7 +651,7 @@
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("方正静蕾简体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label36.ForeColor = System.Drawing.Color.BlueViolet;
-            this.label36.Location = new System.Drawing.Point(457, 1);
+            this.label36.Location = new System.Drawing.Point(445, 1);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(214, 51);
             this.label36.TabIndex = 47;
@@ -657,7 +663,7 @@
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label37.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label37.Location = new System.Drawing.Point(477, 57);
+            this.label37.Location = new System.Drawing.Point(475, 57);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(98, 30);
             this.label37.TabIndex = 48;
@@ -668,7 +674,7 @@
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label38.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label38.Location = new System.Drawing.Point(477, 89);
+            this.label38.Location = new System.Drawing.Point(475, 89);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(101, 30);
             this.label38.TabIndex = 49;
@@ -679,7 +685,7 @@
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("方正静蕾简体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label39.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label39.Location = new System.Drawing.Point(474, 119);
+            this.label39.Location = new System.Drawing.Point(472, 119);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(69, 30);
             this.label39.TabIndex = 50;
@@ -691,7 +697,7 @@
             this.label40.Cursor = System.Windows.Forms.Cursors.Default;
             this.label40.Font = new System.Drawing.Font("方正静蕾简体", 20F);
             this.label40.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label40.Location = new System.Drawing.Point(574, 48);
+            this.label40.Location = new System.Drawing.Point(572, 48);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(99, 43);
             this.label40.TabIndex = 51;
@@ -703,7 +709,7 @@
             this.label41.Cursor = System.Windows.Forms.Cursors.Default;
             this.label41.Font = new System.Drawing.Font("方正静蕾简体", 20F);
             this.label41.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label41.Location = new System.Drawing.Point(572, 84);
+            this.label41.Location = new System.Drawing.Point(570, 84);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(99, 43);
             this.label41.TabIndex = 52;
@@ -715,7 +721,7 @@
             this.label42.Cursor = System.Windows.Forms.Cursors.Default;
             this.label42.Font = new System.Drawing.Font("方正静蕾简体", 20F);
             this.label42.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label42.Location = new System.Drawing.Point(573, 117);
+            this.label42.Location = new System.Drawing.Point(571, 117);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(99, 43);
             this.label42.TabIndex = 53;
@@ -738,40 +744,125 @@
             this.groupBox4.Location = new System.Drawing.Point(1130, 1);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox4.Size = new System.Drawing.Size(218, 765);
+            this.groupBox4.Size = new System.Drawing.Size(218, 787);
             this.groupBox4.TabIndex = 55;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "道具";
             // 
-            // label45
+            // tP1
             // 
-            this.label45.Location = new System.Drawing.Point(61, 169);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(62, 18);
-            this.label45.TabIndex = 63;
-            this.label45.Text = "0金币";
+            this.tP1.Controls.Add(this.tabPage1);
+            this.tP1.Controls.Add(this.tabPage2);
+            this.tP1.Location = new System.Drawing.Point(6, 21);
+            this.tP1.Name = "tP1";
+            this.tP1.SelectedIndex = 0;
+            this.tP1.Size = new System.Drawing.Size(133, 760);
+            this.tP1.TabIndex = 56;
             // 
-            // label47
+            // tabPage1
             // 
-            this.label47.Location = new System.Drawing.Point(0, 169);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(62, 18);
-            this.label47.TabIndex = 62;
-            this.label47.Text = "价格：";
+            this.tabPage1.Controls.Add(this.button15);
+            this.tabPage1.Controls.Add(this.label50);
+            this.tabPage1.Controls.Add(this.label51);
+            this.tabPage1.Controls.Add(this.label44);
+            this.tabPage1.Controls.Add(this.pictureBox6);
+            this.tabPage1.Controls.Add(this.button14);
+            this.tabPage1.Controls.Add(this.pictureBox5);
+            this.tabPage1.Controls.Add(this.label48);
+            this.tabPage1.Controls.Add(this.button13);
+            this.tabPage1.Controls.Add(this.label49);
+            this.tabPage1.Controls.Add(this.pictureBox4);
+            this.tabPage1.Controls.Add(this.label46);
+            this.tabPage1.Controls.Add(this.label43);
+            this.tabPage1.Controls.Add(this.label47);
+            this.tabPage1.Controls.Add(this.label45);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(125, 728);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "爆炸系";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label43
+            // button15
             // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(-3, 132);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(134, 18);
-            this.label43.TabIndex = 58;
-            this.label43.Text = "道具名：核平器\r\n";
+            this.button15.BackColor = System.Drawing.Color.Coral;
+            this.button15.Location = new System.Drawing.Point(2, 598);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(118, 41);
+            this.button15.TabIndex = 73;
+            this.button15.Text = "购买并使用";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // label50
+            // 
+            this.label50.Location = new System.Drawing.Point(59, 575);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(62, 18);
+            this.label50.TabIndex = 72;
+            this.label50.Text = "0金币";
+            // 
+            // label51
+            // 
+            this.label51.Location = new System.Drawing.Point(3, 575);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(62, 18);
+            this.label51.TabIndex = 71;
+            this.label51.Text = "价格：";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(1, 548);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(116, 18);
+            this.label44.TabIndex = 70;
+            this.label44.Text = "道具名：裂变";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::caiquan.Properties.Resources.LB;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox6.Location = new System.Drawing.Point(2, 432);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(118, 110);
+            this.pictureBox6.TabIndex = 69;
+            this.pictureBox6.TabStop = false;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Coral;
+            this.button14.Location = new System.Drawing.Point(2, 384);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(118, 44);
+            this.button14.TabIndex = 68;
+            this.button14.Text = "购买并使用";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::caiquan.Properties.Resources.lightning;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 222);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(118, 104);
+            this.pictureBox5.TabIndex = 64;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label48
+            // 
+            this.label48.Location = new System.Drawing.Point(60, 360);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(62, 18);
+            this.label48.TabIndex = 67;
+            this.label48.Text = "0金币";
             // 
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.Coral;
-            this.button13.Location = new System.Drawing.Point(3, 200);
+            this.button13.Location = new System.Drawing.Point(2, 166);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(118, 44);
             this.button13.TabIndex = 56;
@@ -779,25 +870,67 @@
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // pictureBox5
+            // label49
             // 
-            this.pictureBox5.BackgroundImage = global::caiquan.Properties.Resources.lightning;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(3, 276);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(118, 120);
-            this.pictureBox5.TabIndex = 64;
-            this.pictureBox5.TabStop = false;
+            this.label49.Location = new System.Drawing.Point(4, 360);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(62, 18);
+            this.label49.TabIndex = 66;
+            this.label49.Text = "价格：";
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImage = global::caiquan.Properties.Resources.AAA;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(3, -6);
+            this.pictureBox4.Location = new System.Drawing.Point(1, -6);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(118, 120);
+            this.pictureBox4.Size = new System.Drawing.Size(118, 116);
             this.pictureBox4.TabIndex = 57;
             this.pictureBox4.TabStop = false;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(4, 335);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(116, 18);
+            this.label46.TabIndex = 65;
+            this.label46.Text = "道具名：闪电";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(-4, 117);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(134, 18);
+            this.label43.TabIndex = 58;
+            this.label43.Text = "道具名：核平器\r\n";
+            // 
+            // label47
+            // 
+            this.label47.Location = new System.Drawing.Point(2, 144);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(62, 18);
+            this.label47.TabIndex = 62;
+            this.label47.Text = "价格：";
+            // 
+            // label45
+            // 
+            this.label45.Location = new System.Drawing.Point(60, 145);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(62, 18);
+            this.label45.TabIndex = 63;
+            this.label45.Text = "0金币";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(125, 728);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
             // 
@@ -833,87 +966,11 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(5, 410);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(116, 18);
-            this.label46.TabIndex = 65;
-            this.label46.Text = "道具名：闪电";
-            // 
-            // label48
-            // 
-            this.label48.Location = new System.Drawing.Point(61, 442);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(62, 18);
-            this.label48.TabIndex = 67;
-            this.label48.Text = "0金币";
-            // 
-            // label49
-            // 
-            this.label49.Location = new System.Drawing.Point(5, 442);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(62, 18);
-            this.label49.TabIndex = 66;
-            this.label49.Text = "价格：";
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Coral;
-            this.button14.Location = new System.Drawing.Point(3, 467);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(118, 44);
-            this.button14.TabIndex = 68;
-            this.button14.Text = "购买并使用";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // tP1
-            // 
-            this.tP1.Controls.Add(this.tabPage1);
-            this.tP1.Controls.Add(this.tabPage2);
-            this.tP1.Location = new System.Drawing.Point(6, 21);
-            this.tP1.Name = "tP1";
-            this.tP1.SelectedIndex = 0;
-            this.tP1.Size = new System.Drawing.Size(133, 738);
-            this.tP1.TabIndex = 56;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.button14);
-            this.tabPage1.Controls.Add(this.pictureBox5);
-            this.tabPage1.Controls.Add(this.label48);
-            this.tabPage1.Controls.Add(this.button13);
-            this.tabPage1.Controls.Add(this.label49);
-            this.tabPage1.Controls.Add(this.pictureBox4);
-            this.tabPage1.Controls.Add(this.label46);
-            this.tabPage1.Controls.Add(this.label43);
-            this.tabPage1.Controls.Add(this.label47);
-            this.tabPage1.Controls.Add(this.label45);
-            this.tabPage1.Location = new System.Drawing.Point(4, 28);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(125, 706);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "爆炸系";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(125, 706);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 766);
+            this.ClientSize = new System.Drawing.Size(1268, 700);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.label42);
@@ -974,14 +1031,15 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.tP1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.tP1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1069,5 +1127,10 @@
         private System.Windows.Forms.TabControl tP1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }

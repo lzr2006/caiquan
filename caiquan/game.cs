@@ -1,10 +1,10 @@
-﻿using System;
+﻿using caiqian;
+using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.IO;
-using caiqian;
-using System.Text;
 using System.Media;
+using System.Text;
+using System.Windows.Forms;
 
 namespace caiquan
 {
@@ -31,6 +31,7 @@ namespace caiquan
         public int tool_expensive = 0; //道具增量金币 
         public int hpq = 0; //核平器价格
         public int exp_lightning = 0; //闪电价格
+        public int exp_fission = 0; //裂变价格
         int boss; //地主索引
         int user_material;
         int computer1_material;
@@ -57,13 +58,11 @@ namespace caiquan
         public game()
         {
             InitializeComponent();
-        }     //构造函数
+        }     //构造函数 干什么用的我也不知道 没有的话没法加载窗口
 
 
         private void game_Load(object sender, EventArgs e) {
             string local = Application.StartupPath;
-
-
             RanName rn = new RanName();
 
             #region 判断地主
@@ -647,13 +646,17 @@ namespace caiquan
             {
                 Random rd = new Random();
                 int summer = rd.Next(1, 3);
+                if (results.Length == 0)
+                {
+                    label19.Text = "平 局";
+                }
                 if (results.Length == 1)
                 {
                     if (results[0] == 404)
                     {
                         //谁都没赢
                         whowin = false;
-                        
+
                     }
 
                     //错误处理记录:数组越界:数组索引从0开始
@@ -775,6 +778,8 @@ namespace caiquan
                     }
                     
                 }
+
+
             }
             //关闭执行命令 等待下一次执行
             do_windo = false;
@@ -897,6 +902,7 @@ namespace caiquan
             #endregion
             #region 恢复道具
             button13.Enabled = true;
+            button14.Enabled = true;
             #endregion
         }
 
@@ -1024,15 +1030,15 @@ namespace caiquan
                 backer.Add(item);
             }
             sr.Close();
-            user_truth_blood = Convert.ToInt32(backer[0]);
-            computer1_truth_blood = Convert.ToInt32(backer[1]);
-            computer2_truth_blood = Convert.ToInt32(backer[2]);
+            user_truth_blood = user_blood = Convert.ToInt32(backer[0]);
+            computer1_truth_blood = computer1_blood = Convert.ToInt32(backer[1]);
+            computer2_truth_blood = computer2_blood = Convert.ToInt32(backer[2]);
             user_money = Convert.ToInt32(backer[3]);
             computer1_money = Convert.ToInt32(backer[4]);
             computer2_money = Convert.ToInt32(backer[5]);
-            user_count = Convert.ToInt32(backer[6]);
-            computer1_count = Convert.ToInt32(backer[7]);
-            computer2_count = Convert.ToInt32(backer[8]);
+            user_truth_count = user_count = Convert.ToInt32(backer[6]);
+            computer1_truth_count = computer1_count =  Convert.ToInt32(backer[7]);
+            computer2_truth_count = computer2_count = Convert.ToInt32(backer[8]);
             MessageBox.Show("读档成功!");
             #endregion
         }
@@ -1044,19 +1050,10 @@ namespace caiquan
             
         }
 
-        private void game_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-
-        }
-        #region 道具系统 爆炸系
+        #region 道具系统
         private void button13_Click(object sender, EventArgs e)
         {
-            
+            #region 大 宝 贝 儿
             if (user_money >= hpq)
             {
                 MessageBox.Show("购买成功！","Tool System",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -1077,10 +1074,12 @@ namespace caiquan
             {
                 MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            #endregion
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
+            #region 惊 雷
             if (user_money >= exp_lightning) 
             {
                 MessageBox.Show("购买成功！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1111,12 +1110,83 @@ namespace caiquan
                     computer2_blood = computer2_blood - damage;
                     label18.Text = "-" + damage.ToString();
                 }
+                else
+                {
+                    MessageBox.Show("系统发生严重错误，必须终止。\n你可以提供给我们如下代码：\nERR_ILLEGAL_RANDOM_NUMBER","Error System",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    Environment.Exit(2);
+                }
+
+                button14.Enabled = false;
+
             }
             else
             {
                 MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            #endregion
         }
-        #endregion
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            #region 窜 天 猴
+
+            if (user_money >= exp_fission)
+            {              
+                MessageBox.Show("购买成功！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                user_money = user_money - exp_fission;
+                int damage1 = user_truth_count * 2;
+                int damage2 = user_truth_count * 1;
+                int damage3 = user_truth_count / 2;
+                Random random = new Random();
+                int hapless = random.Next(1,4);//1->玩家 2->Victor 3->Utanus
+                SoundPlayer boom = new SoundPlayer(Application.StartupPath + "\\accets\\HD.wav"); //播放声音
+                boom.Play();
+                if (hapless == 1)
+                {
+                    label29.Text = "爆炸伤害";
+                    label28.Text = label27.Text = "溅射伤害";
+                    label16.Text = "-" + damage1.ToString();
+                    label17.Text = "-" + damage2.ToString();
+                    label18.Text = "-" + damage3.ToString();
+                    user_blood = user_blood - damage1;
+                    computer1_blood = computer1_blood - damage2;
+                    computer2_blood = computer2_blood - damage3;
+                }
+                else if (hapless == 2)
+                {
+                    label27.Text = "爆炸伤害";
+                    label28.Text = label29.Text = "溅射伤害";
+                    label17.Text = "-" + damage1.ToString();
+                    label16.Text = "-" + damage2.ToString();
+                    label18.Text = "-" + damage3.ToString();
+                    user_blood = user_blood - damage3;
+                    computer1_blood = computer1_blood - damage1;
+                    computer2_blood = computer2_blood - damage2;
+                }
+                else if (hapless == 3)
+                {
+                    label28.Text = "爆炸伤害";
+                    label27.Text = label29.Text = "溅射伤害";
+                    label18.Text = "-" + damage1.ToString();
+                    label16.Text = "-" + damage2.ToString();
+                    label17.Text = "-" + damage3.ToString();
+                    user_blood = user_blood - damage2;
+                    computer2_blood = computer2_blood - damage1;
+                    computer1_blood = computer1_blood - damage3;
+                }
+                else
+                {
+                    MessageBox.Show("系统发生严重错误，必须终止。\n你可以提供给我们如下代码：\nERR_ILLEGAL_RANDOM_NUMBER", "Error System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Environment.Exit(2);
+                }
+            }
+            else
+            {
+                MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            #endregion
+        }
+        #endregion 
+
     }//path2, false, )
 }
