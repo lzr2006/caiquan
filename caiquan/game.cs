@@ -30,6 +30,7 @@ namespace caiquan
         public int computer2_money = 0; //Utanus金钱 
         public int tool_expensive = 0; //道具增量金币 
         public int hpq = 0; //核平器价格
+        public int exp_lightning = 0; //闪电价格
         int boss; //地主索引
         int user_material;
         int computer1_material;
@@ -887,6 +888,11 @@ namespace caiquan
                 hpq = this.hpq + rs.Next(1, 3);
                 label45.Text = hpq.ToString() + "金币";
             }
+            for (int i = 0; i < tool_expensive / 2; i++)
+            {
+                exp_lightning = this.exp_lightning + rs.Next(1, 3);
+                label48.Text = exp_lightning.ToString() + "金币";
+            }
 
             #endregion
             #region 恢复道具
@@ -985,8 +991,7 @@ namespace caiquan
                 computer2_money = computer2_money + user_truth_blood;
                 id = 0; //重置 避免多次访问
             }
-            #endregion
-            
+            #endregion        
         }
 
 
@@ -1048,9 +1053,10 @@ namespace caiquan
         {
 
         }
-
+        #region 道具系统 爆炸系
         private void button13_Click(object sender, EventArgs e)
         {
+            
             if (user_money >= hpq)
             {
                 MessageBox.Show("购买成功！","Tool System",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -1072,5 +1078,45 @@ namespace caiquan
                 MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (user_money >= exp_lightning) 
+            {
+                MessageBox.Show("购买成功！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                user_money = user_money - exp_lightning;
+                //对随机一名玩家造成致命打稽
+                Random random = new Random();
+                int hapless = random.Next(1, 4); //1->玩家 2->Victor 3->Utanus
+                SoundPlayer splt = new SoundPlayer(Application.StartupPath + "\\accets\\LT.wav"); //未 雨 绸 缪
+                splt.Play(); //漏了这个是最骚的
+                if (hapless == 1)
+                {
+                    int damage = user_truth_blood;
+                    label29.Text = "雷电打击";
+                    user_blood = user_blood - damage;
+                    label16.Text = "-" + damage.ToString();
+                }
+                else if (hapless == 2)
+                {
+                    int damage = computer1_truth_blood;
+                    label27.Text = "雷电打击";
+                    computer1_blood = computer1_blood - damage;
+                    label17.Text = "-" + damage.ToString();
+                }
+                else if (hapless == 3)
+                {
+                    int damage = computer2_truth_blood;
+                    label28.Text = "雷电打击";
+                    computer2_blood = computer2_blood - damage;
+                    label18.Text = "-" + damage.ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
     }//path2, false, )
 }

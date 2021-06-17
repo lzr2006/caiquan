@@ -24,15 +24,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -88,33 +85,34 @@
             this.label42 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
+            this.tP1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tP1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox2.Location = new System.Drawing.Point(397, 369);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(203, 214);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label1
             // 
@@ -174,17 +172,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox1.Location = new System.Drawing.Point(-2, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(203, 214);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -194,17 +181,6 @@
             this.label2.Size = new System.Drawing.Size(154, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "姓名：victor";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox3.Location = new System.Drawing.Point(918, 1);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(203, 214);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
             // 
             // label3
             // 
@@ -758,12 +734,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label45);
-            this.groupBox4.Controls.Add(this.label47);
-            this.groupBox4.Controls.Add(this.label44);
-            this.groupBox4.Controls.Add(this.label43);
-            this.groupBox4.Controls.Add(this.pictureBox4);
-            this.groupBox4.Controls.Add(this.button13);
+            this.groupBox4.Controls.Add(this.tP1);
             this.groupBox4.Location = new System.Drawing.Point(1130, 1);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -772,10 +743,35 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "道具";
             // 
+            // label45
+            // 
+            this.label45.Location = new System.Drawing.Point(61, 169);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(62, 18);
+            this.label45.TabIndex = 63;
+            this.label45.Text = "0金币";
+            // 
+            // label47
+            // 
+            this.label47.Location = new System.Drawing.Point(0, 169);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(62, 18);
+            this.label47.TabIndex = 62;
+            this.label47.Text = "价格：";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(-3, 132);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(134, 18);
+            this.label43.TabIndex = 58;
+            this.label43.Text = "道具名：核平器\r\n";
+            // 
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.Coral;
-            this.button13.Location = new System.Drawing.Point(11, 248);
+            this.button13.Location = new System.Drawing.Point(3, 200);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(118, 44);
             this.button13.TabIndex = 56;
@@ -783,50 +779,135 @@
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::caiquan.Properties.Resources.lightning;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(3, 276);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(118, 120);
+            this.pictureBox5.TabIndex = 64;
+            this.pictureBox5.TabStop = false;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImage = global::caiquan.Properties.Resources.AAA;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(11, 42);
+            this.pictureBox4.Location = new System.Drawing.Point(3, -6);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(118, 120);
             this.pictureBox4.TabIndex = 57;
             this.pictureBox4.TabStop = false;
             // 
-            // label43
+            // pictureBox3
             // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(5, 180);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(134, 18);
-            this.label43.TabIndex = 58;
-            this.label43.Text = "道具名：核平器\r\n";
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox3.Location = new System.Drawing.Point(918, 1);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(203, 214);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
             // 
-            // label44
+            // pictureBox1
             // 
-            this.label44.AutoSize = true;
-            this.label44.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label44.Location = new System.Drawing.Point(3, 744);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(134, 18);
-            this.label44.TabIndex = 59;
-            this.label44.Text = "道具名：核平器\r\n";
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox1.Location = new System.Drawing.Point(-2, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(203, 214);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
-            // label47
+            // pictureBox2
             // 
-            this.label47.Location = new System.Drawing.Point(8, 217);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(62, 18);
-            this.label47.TabIndex = 62;
-            this.label47.Text = "价格：";
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox2.Location = new System.Drawing.Point(397, 369);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(203, 214);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // label45
+            // label46
             // 
-            this.label45.Location = new System.Drawing.Point(64, 217);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(62, 18);
-            this.label45.TabIndex = 63;
-            this.label45.Text = "0金币";
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(5, 410);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(116, 18);
+            this.label46.TabIndex = 65;
+            this.label46.Text = "道具名：闪电";
+            // 
+            // label48
+            // 
+            this.label48.Location = new System.Drawing.Point(61, 442);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(62, 18);
+            this.label48.TabIndex = 67;
+            this.label48.Text = "0金币";
+            // 
+            // label49
+            // 
+            this.label49.Location = new System.Drawing.Point(5, 442);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(62, 18);
+            this.label49.TabIndex = 66;
+            this.label49.Text = "价格：";
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Coral;
+            this.button14.Location = new System.Drawing.Point(3, 467);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(118, 44);
+            this.button14.TabIndex = 68;
+            this.button14.Text = "购买并使用";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // tP1
+            // 
+            this.tP1.Controls.Add(this.tabPage1);
+            this.tP1.Controls.Add(this.tabPage2);
+            this.tP1.Location = new System.Drawing.Point(6, 21);
+            this.tP1.Name = "tP1";
+            this.tP1.SelectedIndex = 0;
+            this.tP1.Size = new System.Drawing.Size(133, 738);
+            this.tP1.TabIndex = 56;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button14);
+            this.tabPage1.Controls.Add(this.pictureBox5);
+            this.tabPage1.Controls.Add(this.label48);
+            this.tabPage1.Controls.Add(this.button13);
+            this.tabPage1.Controls.Add(this.label49);
+            this.tabPage1.Controls.Add(this.pictureBox4);
+            this.tabPage1.Controls.Add(this.label46);
+            this.tabPage1.Controls.Add(this.label43);
+            this.tabPage1.Controls.Add(this.label47);
+            this.tabPage1.Controls.Add(this.label45);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(125, 706);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "爆炸系";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(125, 706);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // game
             // 
@@ -889,15 +970,18 @@
             this.Name = "game";
             this.Text = "game";
             this.Load += new System.EventHandler(this.game_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tP1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -976,7 +1060,14 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TabControl tP1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
