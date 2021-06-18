@@ -104,13 +104,19 @@
             this.label52 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button18 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -121,6 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -901,6 +908,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button17);
+            this.tabPage2.Controls.Add(this.label56);
+            this.tabPage2.Controls.Add(this.label57);
+            this.tabPage2.Controls.Add(this.label55);
+            this.tabPage2.Controls.Add(this.pictureBox8);
             this.tabPage2.Controls.Add(this.button16);
             this.tabPage2.Controls.Add(this.pictureBox7);
             this.tabPage2.Controls.Add(this.label52);
@@ -950,6 +962,42 @@
             this.label54.TabIndex = 68;
             this.label54.Text = "2金币";
             // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(5, 355);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(116, 18);
+            this.label55.TabIndex = 70;
+            this.label55.Text = "道具名：导弹";
+            // 
+            // label56
+            // 
+            this.label56.Location = new System.Drawing.Point(2, 379);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(62, 18);
+            this.label56.TabIndex = 71;
+            this.label56.Text = "价格：";
+            // 
+            // label57
+            // 
+            this.label57.Location = new System.Drawing.Point(60, 380);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(62, 18);
+            this.label57.TabIndex = 72;
+            this.label57.Text = "2金币";
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.Coral;
+            this.button17.Location = new System.Drawing.Point(2, 399);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(118, 44);
+            this.button17.TabIndex = 73;
+            this.button17.Text = "购买并使用";
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
             // pictureBox6
             // 
             this.pictureBox6.BackgroundImage = global::caiquan.Properties.Resources.LB;
@@ -979,6 +1027,16 @@
             this.pictureBox4.Size = new System.Drawing.Size(118, 116);
             this.pictureBox4.TabIndex = 57;
             this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackgroundImage = global::caiquan.Properties.Resources.missile;
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox8.Location = new System.Drawing.Point(0, 230);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(118, 116);
+            this.pictureBox8.TabIndex = 69;
+            this.pictureBox8.TabStop = false;
             // 
             // pictureBox7
             // 
@@ -1024,11 +1082,23 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.Red;
+            this.button18.Location = new System.Drawing.Point(988, 424);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(113, 45);
+            this.button18.TabIndex = 74;
+            this.button18.Text = "目标选好了";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 700);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.label42);
@@ -1097,6 +1167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1198,5 +1269,11 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Button button18;
     }
 }
