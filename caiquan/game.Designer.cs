@@ -91,18 +91,23 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label48 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -112,9 +117,11 @@
             this.groupBox4.SuspendLayout();
             this.tP1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -781,7 +788,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(125, 728);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "爆炸系";
+            this.tabPage1.Text = "广域系";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button15
@@ -820,16 +827,6 @@
             this.label44.TabIndex = 70;
             this.label44.Text = "道具名：裂变";
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackgroundImage = global::caiquan.Properties.Resources.LB;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox6.Location = new System.Drawing.Point(2, 432);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(118, 110);
-            this.pictureBox6.TabIndex = 69;
-            this.pictureBox6.TabStop = false;
-            // 
             // button14
             // 
             this.button14.BackColor = System.Drawing.Color.Coral;
@@ -840,16 +837,6 @@
             this.button14.Text = "购买并使用";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackgroundImage = global::caiquan.Properties.Resources.lightning;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(0, 222);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(118, 104);
-            this.pictureBox5.TabIndex = 64;
-            this.pictureBox5.TabStop = false;
             // 
             // label48
             // 
@@ -877,16 +864,6 @@
             this.label49.Size = new System.Drawing.Size(62, 18);
             this.label49.TabIndex = 66;
             this.label49.Text = "价格：";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::caiquan.Properties.Resources.AAA;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(1, -6);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(118, 116);
-            this.pictureBox4.TabIndex = 57;
-            this.pictureBox4.TabStop = false;
             // 
             // label46
             // 
@@ -924,13 +901,94 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button16);
+            this.tabPage2.Controls.Add(this.pictureBox7);
+            this.tabPage2.Controls.Add(this.label52);
+            this.tabPage2.Controls.Add(this.label53);
+            this.tabPage2.Controls.Add(this.label54);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(125, 728);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "定点系";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.Coral;
+            this.button16.Location = new System.Drawing.Point(2, 179);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(118, 44);
+            this.button16.TabIndex = 64;
+            this.button16.Text = "购买并使用";
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(-6, 130);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(134, 18);
+            this.label52.TabIndex = 66;
+            this.label52.Text = "道具名：恢复剂";
+            // 
+            // label53
+            // 
+            this.label53.Location = new System.Drawing.Point(2, 157);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(62, 18);
+            this.label53.TabIndex = 67;
+            this.label53.Text = "价格：";
+            // 
+            // label54
+            // 
+            this.label54.Location = new System.Drawing.Point(60, 158);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(62, 18);
+            this.label54.TabIndex = 68;
+            this.label54.Text = "2金币";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::caiquan.Properties.Resources.LB;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox6.Location = new System.Drawing.Point(2, 432);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(118, 110);
+            this.pictureBox6.TabIndex = 69;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::caiquan.Properties.Resources.lightning;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 222);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(118, 104);
+            this.pictureBox5.TabIndex = 64;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::caiquan.Properties.Resources.AAA;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Location = new System.Drawing.Point(1, -6);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(118, 116);
+            this.pictureBox4.TabIndex = 57;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackgroundImage = global::caiquan.Properties.Resources.Recovery_potion;
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox7.Location = new System.Drawing.Point(1, 7);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(118, 116);
+            this.pictureBox7.TabIndex = 65;
+            this.pictureBox7.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -1034,9 +1092,12 @@
             this.tP1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1132,5 +1193,10 @@
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label54;
     }
 }

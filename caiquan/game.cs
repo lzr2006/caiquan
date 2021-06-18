@@ -32,6 +32,7 @@ namespace caiquan
         public int hpq = 0; //核平器价格
         public int exp_lightning = 0; //闪电价格
         public int exp_fission = 0; //裂变价格
+        public int exp_recovery_potion = 2; //恢复药剂价格
         int boss; //地主索引
         int user_material;
         int computer1_material;
@@ -898,11 +899,22 @@ namespace caiquan
                 exp_lightning = this.exp_lightning + rs.Next(1, 3);
                 label48.Text = exp_lightning.ToString() + "金币";
             }
+            for (int i = 0; i < tool_expensive / 2; i++) //坏了 裂变的价格忘了做了 (MGB)
+            {
+                exp_fission = this.exp_fission + rs.Next(1, 3);
+                label54.Text = exp_fission.ToString() + "金币";
+            }
+            for (int i = 0; i < tool_expensive / 2; i++) 
+            {
+                exp_recovery_potion = this.exp_recovery_potion + rs.Next(1,3);
+                label54.Text = exp_recovery_potion.ToString() + "金币";
+            }
 
             #endregion
             #region 恢复道具
             button13.Enabled = true;
             button14.Enabled = true;
+            button15.Enabled = true;
             #endregion
         }
 
@@ -1151,6 +1163,7 @@ namespace caiquan
                     user_blood = user_blood - damage1;
                     computer1_blood = computer1_blood - damage2;
                     computer2_blood = computer2_blood - damage3;
+                    button15.Enabled = false;
                 }
                 else if (hapless == 2)
                 {
@@ -1162,6 +1175,7 @@ namespace caiquan
                     user_blood = user_blood - damage3;
                     computer1_blood = computer1_blood - damage1;
                     computer2_blood = computer2_blood - damage2;
+                    button15.Enabled = false;
                 }
                 else if (hapless == 3)
                 {
@@ -1173,6 +1187,7 @@ namespace caiquan
                     user_blood = user_blood - damage2;
                     computer2_blood = computer2_blood - damage1;
                     computer1_blood = computer1_blood - damage3;
+                    button15.Enabled = false;
                 }
                 else
                 {
@@ -1186,7 +1201,29 @@ namespace caiquan
             }
             #endregion
         }
-        #endregion 
+        
+        private void button16_Click(object sender, EventArgs e)
+        {
+            #region 作 弊 药
+            if (user_money >= exp_recovery_potion)
+            {
+                MessageBox.Show("购买成功！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                user_money = user_money - exp_fission;
+                int recovery = user_truth_blood / 2;
+                SoundPlayer sp = new SoundPlayer(Application.StartupPath + "\\accets\\Recovery.wav"); //大小写就nm离谱
+                sp.Play();
+                label29.Text = "治愈之力"; //好中二啊
+                label16.Text = "+" + recovery.ToString();
+                user_blood = user_blood + recovery;
+                button16.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            #endregion
+        }
 
+        #endregion
     }//path2, false, )
 }
