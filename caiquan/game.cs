@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Media;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace caiquan
@@ -26,7 +25,7 @@ namespace caiquan
         int computer1_truth_blood = 5;
         int computer2_truth_blood = 5; //真实血量
         int money_id = 0; //加钱的id
-        public int select_stopped = 0;
+        public int select_stopped = 0, partII = 0;
         public int user_money = 0; //用户金钱
         public int computer1_money = 0; //Victor金钱
         public int computer2_money = 0; //Utanus金钱 
@@ -36,6 +35,7 @@ namespace caiquan
         public int exp_fission = 0; //裂变价格
         public int exp_recovery_potion = 2; //恢复药剂价格
         public int exp_missile = 2; //导弹价格
+        public int exp_box = 2; //随机盒价格
         int boss; //地主索引
         int user_material;
         int computer1_material;
@@ -852,6 +852,7 @@ namespace caiquan
             islifeing.Add(1);
             islifeing.Add(2);
             islifeing.Add(3);
+            label17.Text = label18.Text = "-0";
             #endregion
             #region 判断属性
             int sx = rd.Next(1, 4);
@@ -907,7 +908,7 @@ namespace caiquan
             for (int i = 0; i < tool_expensive / 2; i++) //坏了 裂变的价格忘了做了 (MGB)
             {
                 exp_fission = this.exp_fission + rs.Next(1, 3);
-                label54.Text = exp_fission.ToString() + "金币";
+                label50.Text = exp_fission.ToString() + "金币";
             }
             for (int i = 0; i < tool_expensive / 2; i++)
             {
@@ -919,6 +920,11 @@ namespace caiquan
                 exp_missile = this.exp_missile + rs.Next(1,3);
                 label57.Text = exp_missile.ToString() + "金币";
             }
+            for (int i = 0; i < tool_expensive / 2; i++)
+            {
+                exp_box = this.exp_box + rs.Next(1, 3);
+                label59.Text = exp_missile.ToString() + "金币";
+            }
 
             #endregion
             #region 恢复道具
@@ -927,6 +933,7 @@ namespace caiquan
             button15.Enabled = true;
             button16.Enabled = true;
             button17.Enabled = true;
+            button19.Enabled = true;
             #endregion
         }
 
@@ -1084,13 +1091,13 @@ namespace caiquan
                 MessageBox.Show("购买成功！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 user_money = user_money - hpq;
                 label27.Text = label28.Text = label29.Text = "世界核平";
-                int damage = user_truth_count * 3; //核弹伤害为用户伤害的3倍
+                int damage = user_truth_count * 2; //核弹伤害为用户伤害的3倍
                 double E = damage / 2;
-                label16.Text = "-" + E.ToString();
-                label17.Text = label18.Text = "-" + damage.ToString();
-                user_blood = user_blood - damage / 2;//加强一点儿可玩性 否则后期不敢用
-                computer1_blood = computer1_blood - damage;
-                computer2_blood = computer2_blood - damage;
+                label16.Text = "-" + damage.ToString();
+                label17.Text = label18.Text = "-" + E.ToString();
+                user_blood = user_blood - damage;//加强一点儿可玩性 否则后期不敢用
+                computer1_blood = computer1_blood - damage / 2;
+                computer2_blood = computer2_blood - damage / 2;
                 SoundPlayer boom = new SoundPlayer(Application.StartupPath + "\\accets\\HD.wav"); //播放声音
                 boom.Play();
                 button13.Enabled = false;
@@ -1237,7 +1244,7 @@ namespace caiquan
             #endregion
         }
 
-        private void button17_Click(object sender, EventArgs e) //Part I
+        private void button17_Click(object sender, EventArgs e)
         {
             #region 导 弹
             if (user_money >= exp_missile)//Part I 
@@ -1248,6 +1255,7 @@ namespace caiquan
                 SelectTarget st = new SelectTarget();
                 st.Show(); //显示窗口向用户获取目标
                 button18.Visible = true; //启动 Part II
+                partII = 1;
                
             }
             else
@@ -1257,11 +1265,23 @@ namespace caiquan
             
         }//path2, false, )
 
+        private void game_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //终止所有线程
+            Environment.Exit(0);
+        }
+
+
         private void button18_Click(object sender, EventArgs e)//Part II
         {
             StreamReader rtarget = new StreamReader(Application.StartupPath + "\\temp\\target.txt");
             string target = rtarget.ReadToEnd(); //就尼玛因为不会玩线程，我已经把文件传参玩儿的出神入化了[裂开]
             rtarget.Close();
+            if (partII == 0)
+            {
+                MessageBox.Show("系统发生严重错误，必须终止。\n你可以提供给我们如下代码：\nERR_UNBELIEVEABLE_TARGET", "Error System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(2);
+            }
             if (target == "1")
             {
                 //Victor
@@ -1290,8 +1310,32 @@ namespace caiquan
                 Environment.Exit(2);
             }
             button18.Visible = false; //关闭 Part II
+            partII = 0;
+            #endregion
+        }
+        private void button19_Click(object sender, EventArgs e)
+        {
+            #region 幸 运 检 测 器
+            if (user_money >= exp_box)
+            {
+                MessageBox.Show("购买成功！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Random flag = new Random();
+                int value = flag.Next(-(user_truth_blood / 2), user_truth_blood / 2);
+                user_blood = user_blood + value;
+                label29.Text = "随机盒子";
+                label16.Text = value.ToString();
+                //可能会影响游戏平衡
+                //value = flag.Next(-(user_truth_blood / 2), user_truth_blood / 2);
+                //user_count = user_count + value; 
+                button19.Enabled = false; 
+            }
+            else
+            {
+                MessageBox.Show("购买失败，金钱不足！", "Tool System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             #endregion
         }
         #endregion
+
     }
 }

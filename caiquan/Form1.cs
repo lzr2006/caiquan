@@ -18,9 +18,9 @@ namespace jiandaoshitoubu
 
         //记录计算机和玩家赢的次数
         int user_win = 0;
-        int nl=0;
+        int nl = 0;
 
-    public Form1()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -65,9 +65,9 @@ namespace jiandaoshitoubu
         private void button7_Click(object sender, EventArgs e)
         {
             Random com = new Random();
-            int computer = com.Next(1,4);
+            int computer = com.Next(1, 4);
 
-            if(computer == 1)
+            if (computer == 1)
             {
                 button4.BackColor = System.Drawing.Color.Red;
                 button5.BackColor = System.Drawing.Color.Blue;
@@ -76,7 +76,7 @@ namespace jiandaoshitoubu
             }
             else
             {
-                if(computer == 2)
+                if (computer == 2)
                 {
                     button5.BackColor = System.Drawing.Color.Red;
                     button4.BackColor = System.Drawing.Color.Blue;
@@ -86,7 +86,8 @@ namespace jiandaoshitoubu
 
                 else
                 {
-                    if(computer == 3) {
+                    if (computer == 3)
+                    {
 
                         button9.BackColor = System.Drawing.Color.Red;
                         button5.BackColor = System.Drawing.Color.Blue;
@@ -100,12 +101,12 @@ namespace jiandaoshitoubu
             {
                 button7.Text = "平局";
 
-                
+
             }
 
             else
             {
-                if(computer == 3 && user_in == 1)
+                if (computer == 3 && user_in == 1)
                 {
                     button7.Text = "您赢了";
                     user_win = user_win + 1;
@@ -113,7 +114,7 @@ namespace jiandaoshitoubu
 
                 else
                 {
-                    if(computer == 1 && user_in == 3)
+                    if (computer == 1 && user_in == 3)
                     {
                         button7.Text = "电脑赢了";
                         user_win = user_win - 1;
@@ -142,7 +143,7 @@ namespace jiandaoshitoubu
                     }
                 }
             }
-            
+
         }
         #endregion
 
@@ -155,6 +156,7 @@ namespace jiandaoshitoubu
                 MessageBox.Show("可以启动");
                 game gm = new game();
                 gm.Show();
+                this.Hide();
             }
 
             else
@@ -186,9 +188,10 @@ namespace jiandaoshitoubu
 
         private void button6_Click(object sender, EventArgs e)
         {
-
             game gm = new game();
             gm.Show();
+            this.Hide();
         }
+
     }
 }

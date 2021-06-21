@@ -89,6 +89,12 @@
     <Compile Include="RanName.cs" />
     <Compile Include="ReadTools.cs" />
     <Compile Include="Save.cs" />
+    <Compile Include="SelectTarget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectTarget.Designer.cs">
+      <DependentUpon>SelectTarget.cs</DependentUpon>
+    </Compile>
     <Compile Include="SwitchWinner.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -109,6 +115,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectTarget.resx">
+      <DependentUpon>SelectTarget.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
@@ -169,6 +178,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AAA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="accets\lightning.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="accets\LB.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="accets\Recovery_potion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="accets\missile.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="accets\box.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
