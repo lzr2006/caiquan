@@ -43,7 +43,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -126,24 +125,26 @@
             // 
             // button7
             // 
+            this.button7.BackColor = System.Drawing.Color.MediumPurple;
             this.button7.Location = new System.Drawing.Point(64, 337);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(115, 40);
             this.button7.TabIndex = 2;
             this.button7.Text = "确认";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
+            this.button8.BackColor = System.Drawing.Color.MediumPurple;
             this.button8.Location = new System.Drawing.Point(391, 337);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(112, 40);
             this.button8.TabIndex = 3;
             this.button8.Text = "启动主程序";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label3
@@ -155,6 +156,7 @@
             this.label3.Size = new System.Drawing.Size(80, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "能力值：";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -186,30 +188,20 @@
             // 
             // button10
             // 
+            this.button10.BackColor = System.Drawing.Color.MediumPurple;
             this.button10.Location = new System.Drawing.Point(226, 337);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(115, 40);
             this.button10.TabIndex = 8;
             this.button10.Text = "关于我们";
-            this.button10.UseVisualStyleBackColor = true;
+            this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(655, 388);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.label4);
@@ -248,7 +240,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button6;
     }
 }
 

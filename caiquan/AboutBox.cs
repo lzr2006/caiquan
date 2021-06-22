@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using jiandaoshitoubu;
 
 namespace caiquan
 {
@@ -19,6 +13,19 @@ namespace caiquan
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            this.Hide();
+        }
+
+        private void AboutBox_Load(object sender, EventArgs e)
+        {
+            okButton.Focus(); //优化用户体验
+        }
+
+        private void logoPictureBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Game gm = new caiquan.Game();
+            gm.Show();
+            this.Hide();
         }
     }
 }

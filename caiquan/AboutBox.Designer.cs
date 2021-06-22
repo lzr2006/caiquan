@@ -79,6 +79,7 @@
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoPictureBox.TabIndex = 12;
             this.logoPictureBox.TabStop = false;
+            this.logoPictureBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.logoPictureBox_MouseDoubleClick);
             // 
             // labelProductName
             // 
@@ -101,7 +102,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(517, 24);
             this.labelVersion.TabIndex = 0;
-            this.labelVersion.Text = "版本：3.5 Test (内部版本3505)";
+            this.labelVersion.Text = "版本：3.7 Test (内部版本3707)\r\n";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCopyright
@@ -113,7 +114,7 @@
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(517, 24);
             this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = "版权：ToysWorld Studio Inc. 保留所有权利.";
+            this.labelCopyright.Text = "版权：MethodBox Studio Inc. 保留所有权利.";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCompanyName
@@ -125,7 +126,7 @@
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(517, 24);
             this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "公司名称：ToysWorld Studio Inc";
+            this.labelCompanyName.Text = "开发者：MethodBox Studio Inc\r\n";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxDescription
@@ -140,19 +141,21 @@
             this.textBoxDescription.Size = new System.Drawing.Size(517, 266);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "说明：本程序由[ToysWorld Studio]独立开发，未经授权，拒绝一切转载、售卖等盗版行为\r\n。\r\n\r\n我们会逐渐向这个小游戏内添加各种系统，如果您有更好" +
-    "的意见或建议，请及时联系我们。\r\n";
+            this.textBoxDescription.Text = "说明：本程序由[MethodBox Studio]独立开发，未经授权，拒绝一切转载、售卖等盗版行为。\r\n\r\n我们会逐渐向这个小游戏内添加各种系统，如果您有更好的意" +
+    "见或建议，请及时联系我们。\r\n\r\n\r\n";
             // 
             // okButton
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.BackColor = System.Drawing.Color.MediumPurple;
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.okButton.Location = new System.Drawing.Point(674, 512);
             this.okButton.Margin = new System.Windows.Forms.Padding(4);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(112, 32);
             this.okButton.TabIndex = 24;
-            this.okButton.Text = "确定(&O)";
+            this.okButton.Text = "关闭(&O)";
+            this.okButton.UseVisualStyleBackColor = false;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // AboutBox
@@ -164,6 +167,7 @@
             this.Name = "AboutBox";
             this.RightToLeftLayout = true;
             this.Text = "关于我们···";
+            this.Load += new System.EventHandler(this.AboutBox_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();

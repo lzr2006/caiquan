@@ -154,7 +154,7 @@ namespace jiandaoshitoubu
             {
                 //启动窗口
                 MessageBox.Show("可以启动");
-                game gm = new game();
+                Game gm = new Game();
                 gm.Show();
                 this.Hide();
             }
@@ -186,12 +186,11 @@ namespace jiandaoshitoubu
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
-            game gm = new game();
+            Game gm = new caiquan.Game();
             gm.Show();
             this.Hide();
         }
-
     }
 }
