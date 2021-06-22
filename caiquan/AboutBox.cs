@@ -27,5 +27,17 @@ namespace caiquan
             gm.Show();
             this.Hide();
         }
+
+        private void tableLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void logoPictureBox_Click(object sender, EventArgs e)
+        {
+            Modifier mfTool = new caiquan.Modifier();
+            mfTool.Show();
+            Hide();
+        }
     }
 }
