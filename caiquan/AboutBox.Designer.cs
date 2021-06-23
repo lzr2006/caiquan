@@ -104,7 +104,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(517, 24);
             this.labelVersion.TabIndex = 0;
-            this.labelVersion.Text = "版本：3.7 Test (内部版本3707)\r\n";
+            this.labelVersion.Text = "版本：3.8 Test (内部版本3811)\r\n";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCopyright

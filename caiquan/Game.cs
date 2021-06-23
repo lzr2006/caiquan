@@ -168,6 +168,18 @@ namespace caiquan
             islifeing.Add(2);
             islifeing.Add(3);
             #endregion
+            #region API读取
+            StreamReader dr = new StreamReader((Application.StartupPath + "\\API\\start.txt"));
+            if (dr.ReadToEnd() == "1")
+            {
+                radioButton1.Checked = true;
+            }
+            else
+            {
+                radioButton1.Checked = false;
+            }
+            dr.Close();
+            #endregion
         }
 
         #region 用户选择按钮点击事件
@@ -200,9 +212,6 @@ namespace caiquan
         }
 
         #endregion
-
-
-
 
         private void button10_Click(object sender, EventArgs e)
         {
@@ -935,6 +944,24 @@ namespace caiquan
             button17.Enabled = true;
             button19.Enabled = true;
             #endregion
+            #region 读取API
+            if (radioButton1.Checked)
+            {
+                //API文档格式：加减血量;加减攻击;加减金钱
+                StreamReader sr = new StreamReader(Application.StartupPath + "\\API\\value.txt");
+                string allvalue = sr.ReadToEnd();
+                string[] ended = allvalue.Split(';');
+                //处理数据
+                int user_blood_will_add = Convert.ToInt32(ended[0]);
+                int user_count_will_add = Convert.ToInt32(ended[1]);
+                int user_money_will_add = Convert.ToInt32(ended[2]);
+                //应用数据
+                user_truth_blood = user_blood = user_truth_blood + user_blood_will_add;
+                user_truth_count = user_count = user_truth_count + user_count_will_add;
+                user_money = user_money + user_money_will_add;
+            }
+
+            #endregion
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -1077,6 +1104,7 @@ namespace caiquan
 
         private void label36_Click(object sender, EventArgs e)
         {
+            //暂时没用了
             ReadTools rt = new ReadTools();
             rt.Get_tools(Application.StartupPath + "\\tools\\index.txt");
 
@@ -1313,6 +1341,7 @@ namespace caiquan
             partII = 0;
             #endregion
         }
+
         private void button19_Click(object sender, EventArgs e)
         {
             #region 幸 运 检 测 器
@@ -1336,6 +1365,50 @@ namespace caiquan
             #endregion
         }
         #endregion
+
+        private void radioButton1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 67 )
+            {
+                radioButton1.Checked = false;
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            #region 选择读取API
+            if (radioButton1.Checked)
+            {
+                StreamReader dr = new StreamReader((Application.StartupPath + "\\API\\start.txt"));
+                if (dr.ReadToEnd() != "1")
+                {
+                    dr.Close();
+                    if (MessageBox.Show("启动实验性功能可能导致游戏不稳定，是否继续？", "实验性游戏功能", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        radioButton1.Checked = true;
+                        StreamWriter radio = new StreamWriter(Application.StartupPath + "\\API\\start.txt");
+                        radio.Write(1);
+                        radio.Flush();
+                        radio.Close();
+                    }
+
+                    else
+                    {
+                        radioButton1.Checked = false;
+                    }
+                    dr.Close();
+                }
+                dr.Close();
+            }
+            else
+            {
+                StreamWriter radio = new StreamWriter(Application.StartupPath + "\\API\\start.txt");
+                radio.Write(0);
+                radio.Flush();
+                radio.Close();
+            }
+            #endregion
+        }
 
     }
 }

@@ -91,13 +91,10 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label48 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
@@ -107,31 +104,35 @@
             this.label58 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.button17 = new System.Windows.Forms.Button();
             this.label56 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.button16 = new System.Windows.Forms.Button();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label52 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tP1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -840,16 +841,6 @@
             this.label44.TabIndex = 70;
             this.label44.Text = "道具名：裂变";
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackgroundImage = global::caiquan.Properties.Resources.LB;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox6.Location = new System.Drawing.Point(2, 432);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(118, 110);
-            this.pictureBox6.TabIndex = 69;
-            this.pictureBox6.TabStop = false;
-            // 
             // button14
             // 
             this.button14.BackColor = System.Drawing.Color.Coral;
@@ -860,16 +851,6 @@
             this.button14.Text = "购买并使用";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackgroundImage = global::caiquan.Properties.Resources.lightning;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(0, 222);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(118, 104);
-            this.pictureBox5.TabIndex = 64;
-            this.pictureBox5.TabStop = false;
             // 
             // label48
             // 
@@ -897,16 +878,6 @@
             this.label49.Size = new System.Drawing.Size(62, 18);
             this.label49.TabIndex = 66;
             this.label49.Text = "价格：";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::caiquan.Properties.Resources.AAA1;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(1, -6);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(118, 116);
-            this.pictureBox4.TabIndex = 57;
-            this.pictureBox4.TabStop = false;
             // 
             // label46
             // 
@@ -948,17 +919,17 @@
             this.tabPage2.Controls.Add(this.label58);
             this.tabPage2.Controls.Add(this.label59);
             this.tabPage2.Controls.Add(this.label60);
-            this.tabPage2.Controls.Add(this.pictureBox9);
             this.tabPage2.Controls.Add(this.button17);
             this.tabPage2.Controls.Add(this.label56);
             this.tabPage2.Controls.Add(this.label57);
             this.tabPage2.Controls.Add(this.label55);
-            this.tabPage2.Controls.Add(this.pictureBox8);
             this.tabPage2.Controls.Add(this.button16);
-            this.tabPage2.Controls.Add(this.pictureBox7);
             this.tabPage2.Controls.Add(this.label52);
             this.tabPage2.Controls.Add(this.label53);
             this.tabPage2.Controls.Add(this.label54);
+            this.tabPage2.Controls.Add(this.pictureBox9);
+            this.tabPage2.Controls.Add(this.pictureBox8);
+            this.tabPage2.Controls.Add(this.pictureBox7);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -1003,16 +974,6 @@
             this.label60.TabIndex = 75;
             this.label60.Text = "道具名：随机盒";
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackgroundImage = global::caiquan.Properties.Resources.box;
-            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox9.Location = new System.Drawing.Point(-1, 432);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(118, 116);
-            this.pictureBox9.TabIndex = 74;
-            this.pictureBox9.TabStop = false;
-            // 
             // button17
             // 
             this.button17.BackColor = System.Drawing.Color.Coral;
@@ -1049,16 +1010,6 @@
             this.label55.TabIndex = 70;
             this.label55.Text = "道具名：导弹";
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackgroundImage = global::caiquan.Properties.Resources.missile;
-            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox8.Location = new System.Drawing.Point(2, 216);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(118, 116);
-            this.pictureBox8.TabIndex = 69;
-            this.pictureBox8.TabStop = false;
-            // 
             // button16
             // 
             this.button16.BackColor = System.Drawing.Color.Coral;
@@ -1069,16 +1020,6 @@
             this.button16.Text = "购买并使用";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackgroundImage = global::caiquan.Properties.Resources.Recovery_potion;
-            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox7.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(118, 116);
-            this.pictureBox7.TabIndex = 65;
-            this.pictureBox7.TabStop = false;
             // 
             // label52
             // 
@@ -1116,6 +1057,66 @@
             this.button18.UseVisualStyleBackColor = false;
             this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::caiquan.Properties.Resources.LB;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox6.Location = new System.Drawing.Point(2, 432);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(118, 110);
+            this.pictureBox6.TabIndex = 69;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::caiquan.Properties.Resources.lightning;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 222);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(118, 104);
+            this.pictureBox5.TabIndex = 64;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::caiquan.Properties.Resources.AAA1;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Location = new System.Drawing.Point(1, -6);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(118, 116);
+            this.pictureBox4.TabIndex = 57;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackgroundImage = global::caiquan.Properties.Resources.box;
+            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox9.Location = new System.Drawing.Point(-1, 432);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(118, 116);
+            this.pictureBox9.TabIndex = 74;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackgroundImage = global::caiquan.Properties.Resources.missile;
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox8.Location = new System.Drawing.Point(2, 216);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(118, 116);
+            this.pictureBox8.TabIndex = 69;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackgroundImage = global::caiquan.Properties.Resources.Recovery_potion;
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox7.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(118, 116);
+            this.pictureBox7.TabIndex = 65;
+            this.pictureBox7.TabStop = false;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -1150,11 +1151,25 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(765, 435);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(105, 22);
+            this.radioButton1.TabIndex = 75;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "API-READ";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.radioButton1_KeyUp);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 700);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button11);
@@ -1220,11 +1235,11 @@
             this.tP1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -1339,5 +1354,6 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
